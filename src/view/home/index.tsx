@@ -40,7 +40,7 @@ function Home() {
             <Grid container spacing={2}>
                 <Grid
                     item
-                    md={6}
+                    md={5}
                     sx={{
                         display: {xs: 'none', sm: 'none', md: 'block'}
                     }}
@@ -49,7 +49,7 @@ function Home() {
                         The Terminal!
                     </Center>
                 </Grid>
-                <Grid item sm={12} md={6}>
+                <Grid item sm={12} md={7}>
                     <Center minHeight={`${pageHeight}px`}>
                         <Box>
                             <Typography
