@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, ThemeOptions, useTheme} from "@mui/material";
 import Box from '@mui/material/Box';
-import Page from "components/page";
+import Page from "component/page";
 
 type Props = {
     children?: React.ReactNode,

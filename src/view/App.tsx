@@ -1,13 +1,13 @@
 import React from 'react';
 import {ThemeProvider} from "@mui/material";
-import {theme} from "constants/themeOptions";
+import {theme} from "constant/themeOptions";
 import ResumeContext from "context/ResumeContext";
-import resume from "constants/resume";
+import resume from "constant/resume";
 
-import Header from "components/header";
-import Home from "views/home";
-import WaveIn from "components/waveIn";
-import About from "views/about";
+import Header from "component/header";
+import Home from "view/home";
+import WaveIn from "component/waveIn";
+import About from "view/about";
 
 function App() {
     return (

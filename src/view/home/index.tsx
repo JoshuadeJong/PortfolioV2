@@ -6,11 +6,11 @@ import Link from '@mui/material/Link';
 import {ThemeOptions, useTheme} from "@mui/material";
 
 import ResumeContext from "context/ResumeContext";
-import Center from "components/center";
-import Page from 'components/page';
-import GitHubBtn from "components/gitHubBtn";
-import LinkedinBtn from "components/linkedinBtn";
-import GetInTouchBtn from "../../components/getInTouchBtn";
+import Center from "component/center";
+import Page from 'component/page';
+import GitHubBtn from "component/gitHubBtn";
+import LinkedinBtn from "component/linkedinBtn";
+import GetInTouchBtn from "../../component/getInTouchBtn";
 
 
 const waveOffsetPx = 100
