@@ -1,5 +1,6 @@
 import {createTheme, ThemeOptions} from "@mui/material";
 
+// TODO: Add a declaration for the new colors
 const theme: ThemeOptions = createTheme({
     palette: {
         primary: {
@@ -20,9 +21,23 @@ const theme: ThemeOptions = createTheme({
             main: '#7cb058',
         },
         text: {
-            secondary: '#808080'
+            secondary: '#808080',
+            // @ts-ignore
+            light: '#ffffffa6',
         },
+        // @ts-ignore
+        terminal: {
+            background: '#262626cc',
+            user: '#ea7e7d',
+            machine: '#e8d880',
+            path: '#7ecdcb',
+            text: '#ffffffa6'
+        }
     },
+    typography: {
+        // @ts-ignore
+        code: ['Source Code Pro', 'monospace']
+    }
 });
 
-export {theme};
+export default theme;

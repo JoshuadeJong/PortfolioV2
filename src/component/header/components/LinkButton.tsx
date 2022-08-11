@@ -1,7 +1,5 @@
 import React from 'react';
 import Button from "@mui/material/Button";
-import {ThemeOptions, useTheme} from "@mui/material";
-
 
 type Props = {
     text: string,
@@ -10,7 +8,6 @@ type Props = {
 
 function LinkButton(props: Props) {
     const {text, onClick} = props;
-    const theme: ThemeOptions = useTheme()
     return (
         <Button
             key={text}
@@ -19,7 +16,7 @@ function LinkButton(props: Props) {
                 pl: 4,
                 pr: 4,
                 display: 'block',
-                color: theme.palette?.text?.secondary,
+                color: 'text.secondary',
                 textTransform: 'capitalize',
             }}
         >

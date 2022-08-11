@@ -1,4 +1,4 @@
-import {Resume} from "context/ResumeContext"
+import {Resume} from "provider/ResumeContext"
 
 const resume: Resume = {
   name: "Joshua de Jong",

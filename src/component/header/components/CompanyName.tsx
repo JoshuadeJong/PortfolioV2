@@ -1,13 +1,9 @@
 import React from 'react';
 import Typography from "@mui/material/Typography";
-import {ThemeOptions, useTheme} from "@mui/material";
-import ResumeContext from "../../../context/ResumeContext";
+import ResumeContext from "provider/ResumeContext";
 
-type Props = {};
-
-function CompanyName(props: Props) {
+function CompanyName() {
     const {name} = React.useContext(ResumeContext);
-    const theme: ThemeOptions = useTheme();
 
     return (
         <Typography
@@ -20,7 +16,7 @@ function CompanyName(props: Props) {
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
-                color: theme.palette?.text?.secondary,
+                color: 'text.secondary',
                 textDecoration: 'none',
             }}
         >
