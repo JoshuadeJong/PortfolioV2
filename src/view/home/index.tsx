@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ForwardedRef, LegacyRef, RefObject} from 'react';
 
 import {Grid} from "@mui/material";
 import Center from "component/center";
@@ -8,15 +8,22 @@ import {Terminal, Cursor} from "component/terminal";
 import NameTitle from "component/nameTitle";
 
 
-const waveOffsetPx = 100
-const headerOffSetPx = 60
+type Props = {
+    id: string,
+}
 
-function Home() {
-    const [pageHeight, setPageHeight] = React.useState( window.innerHeight - waveOffsetPx - headerOffSetPx )
+//function Home(props: Props) {
+
+const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
+    const waveOffsetPx = 100
+    const headerOffSetPx = 60
+
+    const {id} = props
+    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - waveOffsetPx - headerOffSetPx)
 
     React.useEffect(() => {
-        const updateWindowDimensions  = () => {
-            setPageHeight(window.innerHeight  - waveOffsetPx - headerOffSetPx )
+        const updateWindowDimensions = () => {
+            setPageHeight(window.innerHeight - waveOffsetPx - headerOffSetPx)
         }
 
         window.addEventListener("resize", updateWindowDimensions)
@@ -24,29 +31,31 @@ function Home() {
     }, [])
 
     return (
-        <Page maxWidth='xl'>
-            <Grid container spacing={5}>
-                <Grid
-                    item
-                    md={5}
-                    sx={{
-                        display: {xs: 'none', sm: 'none', md: 'block'}
-                    }}
-                >
-                    <Center minHeight={`${pageHeight}px`}>
-                        <Terminal >
-                            <Cursor/>
-                        </Terminal >
-                    </Center>
+        <div id={id} ref={ref}>
+            <Page maxWidth='xl'>
+                <Grid container spacing={5}>
+                    <Grid
+                        item
+                        md={5}
+                        sx={{
+                            display: {xs: 'none', sm: 'none', md: 'block'}
+                        }}
+                    >
+                        <Center minHeight={`${pageHeight}px`}>
+                            <Terminal>
+                                <Cursor/>
+                            </Terminal>
+                        </Center>
+                    </Grid>
+                    <Grid item sm={12} md={7}>
+                        <Center minHeight={`${pageHeight}px`}>
+                            <NameTitle/>
+                        </Center>
+                    </Grid>
                 </Grid>
-                <Grid item sm={12} md={7}>
-                    <Center minHeight={`${pageHeight}px`}>
-                        <NameTitle />
-                    </Center>
-                </Grid>
-            </Grid>
-        </Page>
+            </Page>
+        </div>
     )
-}
+})
 
 export default Home;

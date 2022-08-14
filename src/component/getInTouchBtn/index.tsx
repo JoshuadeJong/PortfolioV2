@@ -1,5 +1,5 @@
 import React from 'react';
-import ResumeContext from "../../provider/ResumeContext";
+import ResumeContext from "provider/ResumeContext";
 import IconButton from "@mui/material/IconButton";
 import EmailIcon from '@mui/icons-material/Email';
 

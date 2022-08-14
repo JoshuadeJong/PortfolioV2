@@ -17,10 +17,12 @@ function Cursor(props: Props) {
         <Box
             sx={{
                 display: 'inline-block',
-                animation: `${blink} 1.2s steps(2) infinite`
+                animation: `${blink} 1.2s steps(2) infinite`,
+
+
             }}
         >
-            |
+            _
         </Box>
     )
 }

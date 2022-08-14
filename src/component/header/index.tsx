@@ -3,23 +3,18 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
+
+import StateContext from "provider/StateContext";
+import Views from "constant/views";
 import MenuButton from "./components/MenuButton";
 import LinkButton from "./components/LinkButton";
 
 
 
-const pages = ['home', 'projects', 'timeline', 'about'];
+const pages = [Views.ABOUT, Views.EMPLOYMENT, Views.SKILLS, Views.PROJECTS];
 
 function Header() {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+    const {jumpToView} = React.useContext(StateContext)
 
     return (
         <AppBar position="relative" color="transparent" elevation={0}>
@@ -33,8 +28,10 @@ function Header() {
                             marginLeft: 'auto',
                         }}>
                         {pages.map((page) => (
-                            <LinkButton text={page} onClick={handleCloseNavMenu}/>
+                            // TODO: Add ID for each Link Button
+                            <LinkButton text={page} onClick={() => jumpToView(page)}/>
                         ))}
+                        <LinkButton text="Resume" onClick={ () => console.log("Implement the resume button")} variant={'outlined'}/>
                     </Box>
 
 
@@ -45,7 +42,7 @@ function Header() {
                             display: { xs: 'flex', sm: 'none' },
                             marginLeft: 'auto',
                     }}>
-                        <MenuButton onClick={handleOpenNavMenu}/>
+                        <MenuButton onClick={() => console.log("Implement the mobile menu button")}/>
                     </Box>
                 </Toolbar>
             </Container>

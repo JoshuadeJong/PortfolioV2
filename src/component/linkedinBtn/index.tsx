@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButton from "@mui/material/IconButton";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import ResumeContext from "../../provider/ResumeContext";
+import ResumeContext from "provider/ResumeContext";
 
 type Props = {
     size: 'small' | 'medium' | 'large',
