@@ -8,9 +8,11 @@ import StateContext from "provider/StateContext";
 import Views from "constant/views";
 
 import Header from "component/header";
-import Home from "view/home";
-import WaveIn from "view/waveIn";
-import About from "view/about";
+import Home from "component/views/home";
+import WaveIn from "component/views/waveIn";
+import About from "component/views/about";
+import Employment from "component/views/employment";
+import Skills from "component/views/skills";
 
 function App() {
 
@@ -43,6 +45,8 @@ function App() {
                 <Home id={Views.HOME} ref={viewRefs[Views.HOME]}/>
                 <WaveIn/>
                 <About id={Views.ABOUT} ref={viewRefs[Views.ABOUT]}/>
+                <Employment id={Views.EMPLOYMENT} ref={viewRefs[Views.EMPLOYMENT]}/>
+                <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]}/>
             </ResumeContext.Provider>
         </StateContext.Provider>
       </ThemeProvider>

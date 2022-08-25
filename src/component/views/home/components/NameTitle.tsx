@@ -2,9 +2,7 @@ import React from 'react';
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import GitHubBtn from "component/gitHubBtn";
-import LinkedinBtn from "component/linkedinBtn";
-import GetInTouchBtn from "component/getInTouchBtn";
+import {GitHubBtn, LinkedinBtn, GetInTouchBtn} from "component/buttons";
 import ResumeContext from "provider/ResumeContext";
 
 

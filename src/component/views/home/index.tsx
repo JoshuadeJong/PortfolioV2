@@ -1,18 +1,15 @@
 import React, {ForwardedRef, LegacyRef, RefObject} from 'react';
 
 import {Grid} from "@mui/material";
-import Center from "component/center";
-import Page from 'component/page';
+import {Page, Center} from "component/layout";
 
 import {Terminal, Cursor} from "component/terminal";
-import NameTitle from "component/nameTitle";
+import NameTitle from "component/views/home/components/NameTitle";
 
 
 type Props = {
     id: string,
 }
-
-//function Home(props: Props) {
 
 const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const waveOffsetPx = 100

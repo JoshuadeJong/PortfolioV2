@@ -8,11 +8,21 @@ type Resume = {
     email: String,
     github: String,
     linkedin: String,
+    about: Array<String>,
 }
 
 
 const ResumeContext = React.createContext<Resume>(
-    {currentEmployer: "", currentEmployerLink: "", email: "", github: "", linkedin: "", name: "", title: ""}
+    {
+        about: [],
+        currentEmployer: "",
+        currentEmployerLink: "",
+        email: "",
+        github: "",
+        linkedin: "",
+        name: "",
+        title: ""
+    }
 )
 
 export default ResumeContext;
