@@ -1,7 +1,8 @@
 import React from 'react';
 
 type Resume = {
-    name: String,
+    nameFull: String,
+    nameFirst: String,
     title: String,
     currentEmployer: String,
     currentEmployerLink: String,
@@ -20,7 +21,8 @@ const ResumeContext = React.createContext<Resume>(
         email: "",
         github: "",
         linkedin: "",
-        name: "",
+        nameFull: "",
+        nameFirst: "",
         title: ""
     }
 )

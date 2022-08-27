@@ -5,14 +5,13 @@ type Props = {
     children?: React.ReactNode,
 };
 
-function Section(props: Props) {
+function HighlightText(props: Props) {
     const {children} = props
     return (
         <Box
             sx={{
-                width: '100%',
-                paddingTop: '5vh',
-                paddingBottom: '5vh',
+                color: 'primary.main',
+                display: 'inline-block',
             }}
         >
             {children}
@@ -20,4 +19,4 @@ function Section(props: Props) {
     )
 }
 
-export default Section;
+export default HighlightText;

@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import ResumeContext from "provider/ResumeContext";
 
 function CompanyName() {
-    const {name} = React.useContext(ResumeContext);
+    const {currentEmployer} = React.useContext(ResumeContext);
 
     return (
         <Typography
@@ -20,7 +20,7 @@ function CompanyName() {
                 textDecoration: 'none',
             }}
         >
-            {name}
+            {currentEmployer}
         </Typography>
     )
 }

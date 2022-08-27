@@ -31,7 +31,7 @@ const About = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>)
 
     return (
         <div id={id} ref={ref}>
-            <Section backgroundColor='primary.dark'>
+            <Section>
                 <Page maxWidth='md'>
                     <Grid container spacing={4}>
                         <Grid item sm={12} md={6}>

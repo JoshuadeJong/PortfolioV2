@@ -1,4 +1,4 @@
-import React, {ForwardedRef, LegacyRef, RefObject} from 'react';
+import React, {ForwardedRef} from 'react';
 
 import {Grid} from "@mui/material";
 import {Page, Center} from "component/layout";
@@ -29,28 +29,9 @@ const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) 
 
     return (
         <div id={id} ref={ref}>
-            <Page maxWidth='xl'>
-                <Grid container spacing={5}>
-                    <Grid
-                        item
-                        md={5}
-                        sx={{
-                            display: {xs: 'none', sm: 'none', md: 'block'}
-                        }}
-                    >
-                        <Center minHeight={`${pageHeight}px`}>
-                            <Terminal>
-                                <Cursor/>
-                            </Terminal>
-                        </Center>
-                    </Grid>
-                    <Grid item sm={12} md={7}>
-                        <Center minHeight={`${pageHeight}px`}>
-                            <NameTitle/>
-                        </Center>
-                    </Grid>
-                </Grid>
-            </Page>
+            <Center minHeight={`${pageHeight}px`}>
+                <NameTitle/>
+            </Center>
         </div>
     )
 })

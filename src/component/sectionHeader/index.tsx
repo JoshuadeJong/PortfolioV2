@@ -17,7 +17,7 @@ function SectionHeader(props: Props) {
             <Typography
                 sx={{
                     color: 'secondary.main',
-                    fontSize: '1.5rem',
+                    fontSize: '2rem',
                     fontWeight: 400,
                     display: 'inline-block',
                     // @ts-ignore
@@ -30,13 +30,21 @@ function SectionHeader(props: Props) {
             <Typography
                 sx={{
                     color: 'primary.contrastText',
-                    fontSize: '1.5rem',
+                    fontSize: '2rem',
                     fontWeight: 400,
                     display: 'inline-block',
                 }}
             >
                 {text}
             </Typography>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '1px',
+                    backgroundColor: 'primary.contrastText',
+                    display: 'inline-block'
+                }}
+            />
         </Box>
     )
 }

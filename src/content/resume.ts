@@ -1,7 +1,8 @@
 import {Resume} from "provider/ResumeContext"
 
 const resume: Resume = {
-  name: "Joshua de Jong",
+  nameFull: "Joshua de Jong",
+  nameFirst: "Joshua",
   title: "Software Engineer II",
   currentEmployer: "Flexport Inc.",
   currentEmployerLink: "https://www.flexport.com/",

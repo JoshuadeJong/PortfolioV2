@@ -1,18 +1,16 @@
 import React, {RefObject} from 'react';
-import {ThemeProvider} from "@mui/material";
+import {PaletteMode, ThemeProvider} from "@mui/material";
+import { CssBaseline } from '@mui/material/';
 
-import theme from "constant/theme";
+import {themeLight, themeDark} from "content/theme";
 import ResumeContext from "provider/ResumeContext";
 import resume from "content/resume";
-import StateContext from "provider/StateContext";
+import SessionContext from "provider/SessionContext";
 import Views from "constant/views";
 
-import Header from "component/header";
+import Header from "component/views/header";
 import Home from "component/views/home";
-import WaveIn from "component/views/waveIn";
-import About from "component/views/about";
-import Employment from "component/views/employment";
-import Skills from "component/views/skills";
+import {Page} from "component/layout";
 
 function App() {
 
@@ -25,6 +23,7 @@ function App() {
         [Views.CONNECT]: React.createRef<HTMLDivElement>(),
     }
 
+    const [currentTheme, setCurrentTheme] = React.useState<PaletteMode>('dark')
     const [currentView, setCurrentView] = React.useState(Views[window.location.hash as keyof typeof Views] || Views.HOME)
     const jumpToView = (newView: Views) => {
         setCurrentView(newView)
@@ -38,17 +37,19 @@ function App() {
     }
 
     return (
-      <ThemeProvider theme={theme}>
-        <StateContext.Provider value={{currentView, setCurrentView, jumpToView, viewRefs}}>
+      <ThemeProvider theme={currentTheme === 'light' ? themeLight : themeDark}>
+        <CssBaseline />
+        <SessionContext.Provider value={{viewRefs, currentView, setCurrentView, jumpToView, currentTheme, setCurrentTheme}}>
             <ResumeContext.Provider value={resume}>
                 <Header/>
-                <Home id={Views.HOME} ref={viewRefs[Views.HOME]}/>
-                <WaveIn/>
-                <About id={Views.ABOUT} ref={viewRefs[Views.ABOUT]}/>
-                <Employment id={Views.EMPLOYMENT} ref={viewRefs[Views.EMPLOYMENT]}/>
-                <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]}/>
+                <Page maxWidth='xl'>
+                    <Home id={Views.HOME} ref={viewRefs[Views.HOME]}/>
+
+
+
+                </Page>
             </ResumeContext.Provider>
-        </StateContext.Provider>
+        </SessionContext.Provider>
       </ThemeProvider>
     );
 }
