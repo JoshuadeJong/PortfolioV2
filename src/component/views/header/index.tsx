@@ -17,7 +17,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 
 import SessionContext from "provider/SessionContext";
-import Views from "constant/views";
+import Views from "type/Views";
 import MenuButton from "./components/MenuButton";
 import LinkButton from "./components/LinkButton";
 import ResumeButton from "./components/ResumeButton";
@@ -25,7 +25,7 @@ import MobileMenuItem from "./components/MobileMenuItem";
 import DescriptionIcon from '@mui/icons-material/Description';
 
 
-const pages = [Views.ABOUT, Views.EMPLOYMENT, Views.SKILLS, Views.PROJECTS];
+const pages = [Views.ABOUT, Views.EMPLOYMENT, Views.PROJECTS, Views.SKILLS];
 
 function Header() {
     const {jumpToView} = React.useContext(SessionContext)
@@ -48,17 +48,17 @@ function Header() {
     const getIcon = (page: Views) => {
         switch (page) {
             case Views.HOME:
-                return <HomeIcon />
+                return <HomeIcon/>
             case (Views.ABOUT):
-                return <FaceIcon />
+                return <FaceIcon/>
             case Views.EMPLOYMENT:
-                return <WorkIcon />
+                return <WorkIcon/>
             case Views.SKILLS:
-                return <SchoolIcon />
+                return <SchoolIcon/>
             case Views.PROJECTS:
-                return <TerminalIcon />
+                return <TerminalIcon/>
             case Views.CONNECT:
-                return <EmailIcon />
+                return <EmailIcon/>
         }
     }
 
@@ -76,7 +76,7 @@ function Header() {
                         {pages.map((page) => (
                             <LinkButton text={page} onClick={() => jumpToView(page)}/>
                         ))}
-                        <ResumeButton text="Resume" onClick={ () => console.log("Implement the resume button")}/>
+                        <ResumeButton text="Resume" onClick={() => console.log("Implement the resume button")}/>
                     </Box>
 
 
@@ -84,9 +84,9 @@ function Header() {
                     <Box
                         sx={{
                             flexGrow: 0,
-                            display: { xs: 'flex', sm: 'none' },
+                            display: {xs: 'flex', sm: 'none'},
                             marginLeft: 'auto',
-                    }}>
+                        }}>
                         <MenuButton onClick={toggleDrawer(true)}/>
                         <SwipeableDrawer
                             anchor='top'
@@ -99,21 +99,30 @@ function Header() {
                                     <MobileMenuItem
                                         text={page}
                                         icon={getIcon(page)}
-                                        onClick={() => {setIsMenuOpen(false); jumpToView(page)}}
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            jumpToView(page)
+                                        }}
                                     />
                                 ))}
                                 <MobileMenuItem
                                     text={Views.CONNECT}
                                     icon={getIcon(Views.CONNECT)}
-                                    onClick={() => {setIsMenuOpen(false); jumpToView(Views.CONNECT)}}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        jumpToView(Views.CONNECT)
+                                    }}
                                 />
                             </List>
-                            <Divider />
+                            <Divider/>
                             <List>
                                 <MobileMenuItem
                                     text='Resume'
-                                    icon={<DescriptionIcon />}
-                                    onClick={() => {setIsMenuOpen(false); console.log("Implement the resume button")}}
+                                    icon={<DescriptionIcon/>}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        console.log("Implement the resume button")
+                                    }}
                                 />
                             </List>
                         </SwipeableDrawer>

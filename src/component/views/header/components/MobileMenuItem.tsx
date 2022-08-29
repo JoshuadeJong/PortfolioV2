@@ -12,7 +12,7 @@ function MobileMenuItem(props: Props) {
     return (
         <ListItem disablePadding>
             <ListItemButton onClick={onClick}>
-                <ListItemIcon >
+                <ListItemIcon>
                     {icon}
                 </ListItemIcon>
                 <ListItemText primary={text}/>

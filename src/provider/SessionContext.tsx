@@ -1,5 +1,5 @@
 import React, {RefObject} from 'react';
-import Views from "constant/views";
+import Views from "type/Views";
 import {PaletteMode} from "@mui/material";
 
 type SessionState = {

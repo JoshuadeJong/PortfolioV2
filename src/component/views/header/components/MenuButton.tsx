@@ -15,7 +15,7 @@ function MenuButton(props: Props) {
             onClick={onClick}
             color="inherit"
         >
-            <MenuIcon />
+            <MenuIcon/>
         </IconButton>
     )
 }

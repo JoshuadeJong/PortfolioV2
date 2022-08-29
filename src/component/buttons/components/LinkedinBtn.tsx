@@ -1,19 +1,18 @@
 import React from 'react';
 import IconButton from "@mui/material/IconButton";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import ResumeContext from "provider/ResumeContext";
 
 type Props = {
+    link: string,
     size: 'small' | 'medium' | 'large',
 };
 
 function LinkedinBtn(props: Props) {
-    const {size} = props;
-    const {linkedin} = React.useContext(ResumeContext)
+    const {link, size} = props;
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         // @ts-ignore
-        window.open(linkedin);
+        window.open(link);
     }
 
     return (

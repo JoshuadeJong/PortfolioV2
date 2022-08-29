@@ -1,26 +1,22 @@
 import React, {ForwardedRef} from 'react';
 
-import {Grid} from "@mui/material";
-import {Page, Center} from "component/layout";
-
-import {Terminal, Cursor} from "component/terminal";
+import {Center} from "component/layout";
 import NameTitle from "component/views/home/components/NameTitle";
-
 
 type Props = {
     id: string,
 }
 
 const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-    const waveOffsetPx = 100
-    const headerOffSetPx = 60
+    const headerOffSetPx = 64
+    const sectionHeaderPx = 56
 
     const {id} = props
-    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - waveOffsetPx - headerOffSetPx)
+    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - headerOffSetPx - sectionHeaderPx)
 
     React.useEffect(() => {
         const updateWindowDimensions = () => {
-            setPageHeight(window.innerHeight - waveOffsetPx - headerOffSetPx)
+            setPageHeight(window.innerHeight - headerOffSetPx - sectionHeaderPx)
         }
 
         window.addEventListener("resize", updateWindowDimensions)

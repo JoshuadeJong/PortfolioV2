@@ -4,16 +4,16 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import ResumeContext from "provider/ResumeContext";
 
 type Props = {
+    link: string,
     size: 'small' | 'medium' | 'large',
 };
 
 function GitHubBtn(props: Props) {
-    const {size} = props;
-    const {github} = React.useContext(ResumeContext)
+    const {size, link} = props;
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         // @ts-ignore
-        window.open(github);
+        window.open(link);
     }
 
     return (

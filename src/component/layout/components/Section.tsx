@@ -11,8 +11,7 @@ function Section(props: Props) {
         <Box
             sx={{
                 width: '100%',
-                paddingTop: '5vh',
-                paddingBottom: '5vh',
+                paddingBottom: '10vh',
             }}
         >
             {children}

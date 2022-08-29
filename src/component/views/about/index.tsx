@@ -1,9 +1,8 @@
 import React, {ForwardedRef} from 'react';
 import Grid from "@mui/material/Grid"
-import Box from '@mui/material/Box';
 
-import {Page, Section, Center} from "component/layout";
-import PageHeader from "component/sectionHeader";
+import {Section, Center} from "component/layout";
+import {SectionHeader, Par} from "component/typography";
 import ResumeContext from "provider/ResumeContext";
 
 type Props = {
@@ -22,9 +21,7 @@ const About = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>)
                 setPhotoHeight(photoRef.current?.offsetHeight)
             }
         }
-        if (photoRef.current) {
-            setPhotoHeight(photoRef.current?.offsetHeight)
-        }
+        updateWindowDimensions()
         window.addEventListener('resize', updateWindowDimensions)
         return () => window.removeEventListener('resize', updateWindowDimensions)
     })
@@ -32,35 +29,31 @@ const About = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>)
     return (
         <div id={id} ref={ref}>
             <Section>
-                <Page maxWidth='md'>
-                    <Grid container spacing={4}>
-                        <Grid item sm={12} md={6}>
-                            <div ref={photoRef}>
-                                <PageHeader text="About Me" count={1}/>
-                                <Box
-                                    sx={{
-                                        color: 'text.light'
-                                    }}
-                                >
-                                    {about.map((element) => {
-                                        return (
-                                            <p>
-                                                {element}
-                                            </p>
-                                        )
-                                    })}
-                                </Box>
-                            </div>
-                        </Grid>
-                        <Grid item sm={12} md={6}>
-                            <Center minHeight={`${photoHeight}px`}>
-                                <div>
-                                    This would be an image. I think...
-                                </div>
-                            </Center>
-                        </Grid>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <SectionHeader>
+                            Here is a bit about me.
+                        </SectionHeader>
                     </Grid>
-                </Page>
+                    <Grid item sm={12} md={5}>
+                        <div ref={photoRef}>
+                            {about.map((text) => {
+                                return (
+                                    <Par>
+                                        {text}
+                                    </Par>
+                                )
+                            })}
+                        </div>
+                    </Grid>
+                    <Grid item sm={12} md={7}>
+                        <Center minHeight={`${photoHeight}px`}>
+                            <div>
+                                This would be an image of Rexxi. Of Course!!!
+                            </div>
+                        </Center>
+                    </Grid>
+                </Grid>
             </Section>
         </div>
     )

@@ -1,31 +1,18 @@
 import React from 'react';
-
-type Resume = {
-    nameFull: String,
-    nameFirst: String,
-    title: String,
-    currentEmployer: String,
-    currentEmployerLink: String,
-    email: String,
-    github: String,
-    linkedin: String,
-    about: Array<String>,
-}
-
+import Resume from "type/Resume";
 
 const ResumeContext = React.createContext<Resume>(
     {
+        skills: [],
         about: [],
-        currentEmployer: "",
-        currentEmployerLink: "",
         email: "",
         github: "",
         linkedin: "",
         nameFull: "",
         nameFirst: "",
-        title: ""
+        career: [],
+        projects: [],
     }
 )
 
 export default ResumeContext;
-export type {Resume};
