@@ -206,6 +206,26 @@ const ResumeContent: Resume = {
       projectLink: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1131494371'
     }
 
+  ],
+  referrals: [
+    {
+      text: "Josh is an awesome dev and an even better tech lead! Any team would be luckly to have Josh!",
+      person: "Joe Smith",
+      position: "Senior Engineer",
+      company: "Amazon"
+    },
+    {
+      text: "Josh is an awesome dev and an even better tech lead! Any team would be luckly to have Josh!",
+      person: "Joe Smith",
+      position: "Senior Engineer",
+      company: "Amazon"
+    },
+    {
+      text: "Josh is an awesome dev and an even better tech lead! Any team would be luckly to have Josh!",
+      person: "Joe Smith",
+      position: "Senior Engineer",
+      company: "Amazon"
+    }
   ]
 }
 

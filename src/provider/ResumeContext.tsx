@@ -3,15 +3,16 @@ import Resume from "type/Resume";
 
 const ResumeContext = React.createContext<Resume>(
     {
-        skills: [],
-        about: [],
+        nameFull: "",
+        nameFirst: "",
         email: "",
         github: "",
         linkedin: "",
-        nameFull: "",
-        nameFirst: "",
+        skills: [],
+        about: [],
         career: [],
         projects: [],
+        referrals: [],
     }
 )
 

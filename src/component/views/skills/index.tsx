@@ -18,7 +18,7 @@ const Skills = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>
     return (
         <div id={id} ref={ref}>
             <Section>
-                <Grid container spacing={2}>
+                <Grid container spacing={4}>
                     <Grid
                         item
                         md={4}
@@ -26,7 +26,6 @@ const Skills = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>
                         sx={{
                             textAlign: {
                                 md: 'left',
-                                sm: 'center',
                                 xs: 'center',
                             }
                         }}

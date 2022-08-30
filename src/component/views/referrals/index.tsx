@@ -2,10 +2,10 @@ import React, {ForwardedRef} from 'react';
 import Grid from "@mui/material/Grid"
 
 import {Section} from "component/layout";
-import {Par, SectionHeader} from "component/typography";
+import {SectionHeader} from "component/typography";
 import Container from "@mui/material/Container";
-import {Card, CardActions, CardContent, Paper} from "@mui/material";
-import Box from "@mui/material/Box";
+import ResumeContext from "provider/ResumeContext";
+import ReferralCard from "./components/ReferralCard";
 
 
 type Props = {
@@ -14,6 +14,8 @@ type Props = {
 
 const Referrals = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const {id} = props
+    const {referrals} = React.useContext(ResumeContext);
+
 
     return (
         <div id={id} ref={ref}>
@@ -26,19 +28,10 @@ const Referrals = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivEleme
                             </SectionHeader>
                         </Grid>
                         <Grid container item xs={12} spacing={4}>
-                            { [0, 1, 2].map((index) => {
+                            { referrals.map((referral, index) => {
                                 return (
-                                    <Grid item sm={4} xs={12}>
-                                        <Paper elevation={3}>
-                                            <Box sx={{padding: 2}}>
-                                                <Par textColor='text.primary'>
-                                                    Josh is an awesome dev and an even better tech lead! Any team would be luckly to have Josh!
-                                                </Par>
-                                                <Par noMargin>
-                                                    Joe Smith, Senior Engineer @ Amazon
-                                                </Par>
-                                            </Box>
-                                        </Paper>
+                                    <Grid item sm={4} xs={12} key={index}>
+                                        <ReferralCard referral={referral} />
                                     </Grid>
                                 )
                             })}

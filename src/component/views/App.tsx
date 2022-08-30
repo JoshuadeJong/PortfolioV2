@@ -16,6 +16,7 @@ import Employment from "component/views/employment";
 import Skills from "component/views/skills";
 import Projects from "component/views/projects";
 import Referrals from "component/views/referrals";
+import Connect from "component/views/connect";
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
                         <Projects id={Views.PROJECTS} ref={viewRefs[Views.PROJECTS]}/>
                         <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]}/>
                         <Referrals id={Views.REFERRALS} ref={viewRefs[Views.REFERRALS]}/>
+                        <Connect id={Views.CONNECT} ref={viewRefs[Views.CONNECT]}/>
                     </Container>
                 </ResumeContext.Provider>
             </SessionContext.Provider>
