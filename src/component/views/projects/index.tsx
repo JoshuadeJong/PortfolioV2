@@ -21,7 +21,7 @@ const Projects = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
     return (
         <div id={id} ref={ref}>
             <Section>
-                <Grid container spacing={2}>
+                <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <SectionHeader>
                             Here are a few of my favorite projects!
@@ -29,7 +29,7 @@ const Projects = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElemen
                     </Grid>
                     { projects.map((project, index) => {
                         return (
-                            <Grid item xs={12} sx={{marginBottom: 8}}>
+                            <Grid item xs={12} sx={{marginBottom: 4}}>
                                 <ProjectContainer project={project} imagePath={project.imagePath} reverse={index % 2 === 1}>
                                     <ProjectCard project={project}/>
                                 </ProjectContainer>

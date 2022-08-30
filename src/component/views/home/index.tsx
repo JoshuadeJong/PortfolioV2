@@ -9,14 +9,13 @@ type Props = {
 
 const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const headerOffSetPx = 64
-    const sectionHeaderPx = 56
 
     const {id} = props
-    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - headerOffSetPx - sectionHeaderPx)
+    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - headerOffSetPx)
 
     React.useEffect(() => {
         const updateWindowDimensions = () => {
-            setPageHeight(window.innerHeight - headerOffSetPx - sectionHeaderPx)
+            setPageHeight(window.innerHeight - headerOffSetPx)
         }
 
         window.addEventListener("resize", updateWindowDimensions)

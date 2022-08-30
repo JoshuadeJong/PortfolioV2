@@ -1,9 +1,10 @@
 import React, {ForwardedRef} from 'react';
 import Grid from "@mui/material/Grid"
 
-import {Section, Center} from "component/layout";
+import {Section, Center, MGrid} from "component/layout";
 import {SectionHeader, Par} from "component/typography";
 import ResumeContext from "provider/ResumeContext";
+import Box from "@mui/material/Box";
 
 type Props = {
     id: string,
@@ -29,13 +30,13 @@ const About = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>)
     return (
         <div id={id} ref={ref}>
             <Section>
-                <Grid container spacing={2}>
+                <Grid container spacing={4}>
                     <Grid item xs={12}>
                         <SectionHeader>
                             Here is a bit about me.
                         </SectionHeader>
                     </Grid>
-                    <Grid item sm={12} md={5}>
+                    <Grid item sm={12} md={6}>
                         <div ref={photoRef}>
                             {about.map((text) => {
                                 return (
@@ -46,11 +47,34 @@ const About = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>)
                             })}
                         </div>
                     </Grid>
-                    <Grid item sm={12} md={7}>
+                    <Grid item xs={12} md={6}>
                         <Center minHeight={`${photoHeight}px`}>
-                            <div>
-                                This would be an image of Rexxi. Of Course!!!
-                            </div>
+                            <Box height='300px' width='250px'>
+                                <MGrid row={12} column={12} height={`300px`}>
+                                    <Box
+                                        sx={{
+                                            gridRowStart: 2,
+                                            gridRowEnd: 13,
+                                            gridColumnStart:2,
+                                            gridColumnEnd: 13,
+                                            zIndex: 100,
+                                        }}
+                                    >
+                                        <Box sx={{ width: '100%', height: '100%', outlineStyle: 'solid', outlineColor: '#00c7ff', outlineWidth: 'thick'}}/>
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            gridRowStart: 1,
+                                            gridRowEnd: 12,
+                                            gridColumnStart: 1,
+                                            gridColumnEnd: 12,
+                                            zIndex: 200
+                                        }}
+                                    >
+                                        <Box sx={{width: '100%', height: '100%', backgroundColor: 'green'}}/>
+                                    </Box>
+                                </MGrid>
+                            </Box>
                         </Center>
                     </Grid>
                 </Grid>

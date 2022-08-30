@@ -23,7 +23,7 @@ const Employment = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElem
         <div id={id} ref={ref}>
             <Section>
                 <Container maxWidth='md' disableGutters={true}>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={4}>
                         <Grid item xs={12}>
                             <SectionHeader>
                                 Awesome places I've worked at!

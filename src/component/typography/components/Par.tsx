@@ -3,17 +3,22 @@ import Typography from "@mui/material/Typography";
 
 type Props = {
     noMargin?: boolean
-    children?: React.ReactNode,
+    textColor?: string
+    children?: React.ReactNode
 };
 
 function Par(props: Props) {
-    const {noMargin, children} = props
+    const {noMargin, textColor, children} = {
+        ...props,
+        noMargin: props.noMargin ? 'none' : '1rem',
+        textColor: props.textColor || 'text.secondary',
+    }
     return (
         <Typography
             variant='body1'
             sx={{
-                marginBottom: noMargin ? 'none' : '1rem',
-                color: 'text.secondary'
+                marginBottom: noMargin,
+                color: textColor
             }}
         >
             {children}
