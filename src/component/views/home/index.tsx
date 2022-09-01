@@ -1,23 +1,23 @@
 import React, {ForwardedRef} from 'react';
 
+import ResumeContext from "provider/ResumeContext";
 import {Center} from "component/layout";
-import NameTitle from "component/views/home/components/NameTitle";
+import NameTitle from "./components/NameTitle";
 
 type Props = {
     id: string,
 }
 
 const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-    const headerOffSetPx = 64
-
     const {id} = props
-    const [pageHeight, setPageHeight] = React.useState(window.innerHeight - headerOffSetPx)
+    const {nameFirst, github, linkedin, email} = React.useContext(ResumeContext)
+    const [pageHeight, setPageHeight] = React.useState(0)
 
     React.useEffect(() => {
         const updateWindowDimensions = () => {
-            setPageHeight(window.innerHeight - headerOffSetPx)
+            setPageHeight(window.innerHeight - 64) // Remove the pixel height of the header
         }
-
+        updateWindowDimensions()
         window.addEventListener("resize", updateWindowDimensions)
         return () => window.removeEventListener("resize", updateWindowDimensions)
     }, [])
@@ -25,7 +25,7 @@ const Home = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) 
     return (
         <div id={id} ref={ref}>
             <Center minHeight={`${pageHeight}px`}>
-                <NameTitle/>
+                <NameTitle name={nameFirst} github={github} linkedin={linkedin} email={email}/>
             </Center>
         </div>
     )

@@ -1,20 +1,6 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Container from '@mui/material/Container';
-import {
-    Divider,
-    List,
-    SwipeableDrawer
-} from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
-import FaceIcon from '@mui/icons-material/Face';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import EmailIcon from '@mui/icons-material/Email';
-
+import {AppBar, Box, Toolbar, Container, Divider, List, SwipeableDrawer} from '@mui/material';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 import SessionContext from "provider/SessionContext";
 import Views from "type/Views";
@@ -22,8 +8,7 @@ import MenuButton from "./components/MenuButton";
 import LinkButton from "./components/LinkButton";
 import ResumeButton from "./components/ResumeButton";
 import MobileMenuItem from "./components/MobileMenuItem";
-import DescriptionIcon from '@mui/icons-material/Description';
-
+import GetIcon from "./components/GetIcon";
 
 const pages = [Views.ABOUT, Views.EMPLOYMENT, Views.PROJECTS, Views.SKILLS];
 
@@ -44,23 +29,6 @@ function Header() {
 
             setIsMenuOpen(open)
         };
-
-    const getIcon = (page: Views) => {
-        switch (page) {
-            case Views.HOME:
-                return <HomeIcon/>
-            case (Views.ABOUT):
-                return <FaceIcon/>
-            case Views.EMPLOYMENT:
-                return <WorkIcon/>
-            case Views.SKILLS:
-                return <SchoolIcon/>
-            case Views.PROJECTS:
-                return <TerminalIcon/>
-            case Views.CONNECT:
-                return <EmailIcon/>
-        }
-    }
 
     return (
         <AppBar position="relative" color="transparent" elevation={0}>
@@ -98,7 +66,7 @@ function Header() {
                                 {pages.map((page) => (
                                     <MobileMenuItem
                                         text={page}
-                                        icon={getIcon(page)}
+                                        icon={<GetIcon view={page}/>}
                                         onClick={() => {
                                             setIsMenuOpen(false);
                                             jumpToView(page)
@@ -107,7 +75,7 @@ function Header() {
                                 ))}
                                 <MobileMenuItem
                                     text={Views.CONNECT}
-                                    icon={getIcon(Views.CONNECT)}
+                                    icon={<GetIcon view={Views.CONNECT}/>}
                                     onClick={() => {
                                         setIsMenuOpen(false);
                                         jumpToView(Views.CONNECT)

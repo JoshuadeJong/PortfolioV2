@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from "@mui/material/IconButton";
+import {IconButton} from "@mui/material";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 type Props = {

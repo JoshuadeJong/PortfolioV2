@@ -1,6 +1,5 @@
 import React from 'react';
-import Typography from "@mui/material/Typography";
-import {List, ListItem, ListItemIcon, ListItemText} from "@mui/material";
+import {List, ListItem, ListItemIcon, ListItemText, Typography} from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 import Employment from "type/Employment";

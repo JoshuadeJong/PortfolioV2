@@ -1,9 +1,8 @@
 import React from 'react';
-import Box from "@mui/material/Box";
+import {Box} from "@mui/material";
 
 import Project from "type/Project";
-import {Center, MGrid} from "component/layout";
-import {Image} from "@material-ui/icons";
+import {MGrid} from "component/layout";
 
 type Props = {
     reverse?: boolean,
@@ -14,21 +13,6 @@ type Props = {
 
 function ProjectContainer(props: Props) {
     const {reverse, imagePath, children} =  props
-
-    const [imageWidth, setImageWidth] = React.useState(0)
-    const imageContainerRef = React.useRef<HTMLDivElement>()
-    React.useEffect(() => {
-        const updateWindowDimensions = () => {
-            if (imageContainerRef.current) {
-                console.log(imageContainerRef.current?.offsetWidth)
-                setImageWidth(imageContainerRef.current?.offsetWidth)
-            }
-        }
-        updateWindowDimensions()
-        window.addEventListener('resize', updateWindowDimensions)
-        return () => window.removeEventListener('resize', updateWindowDimensions)
-
-    })
 
     const height = 400
     const imageCols = reverse ? [1, 8] : [6, 13]
@@ -55,7 +39,6 @@ function ProjectContainer(props: Props) {
                  }}
             >
                 <Box
-                    ref={imageContainerRef}
                     sx={{
                         textAlign: {
                             sm: reverse ? 'left' : 'right',

@@ -1,6 +1,6 @@
 import React from 'react';
-import Box from "@mui/material/Box";
-import {Tab, Tabs} from "@mui/material";
+import {Box, Tab, Tabs} from "@mui/material";
+
 import Employment from "type/Employment";
 
 type Props = {

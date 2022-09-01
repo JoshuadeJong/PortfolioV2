@@ -1,12 +1,9 @@
 import React from 'react';
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import {Chip, Paper, Stack} from "@mui/material";
+import {Box, Chip, Paper, Typography, Grid} from "@mui/material";
 
-import {Par} from "component/typography";
 import Project from "type/Project";
+import {Par} from "component/typography";
 import {GitHubBtn, LaunchBtn} from "component/buttons";
-import Grid from "@mui/material/Grid";
 
 type Props = {
     project: Project,

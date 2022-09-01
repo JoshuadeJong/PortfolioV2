@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from "@mui/material/Link";
+import {Link} from "@mui/material";
 
 type Props = {
     name: string,

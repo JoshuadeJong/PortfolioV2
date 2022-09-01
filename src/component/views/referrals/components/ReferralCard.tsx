@@ -1,8 +1,8 @@
 import React from 'react';
-import {Paper} from "@mui/material";
-import Box from "@mui/material/Box";
-import {Par} from "component/typography";
+import {Box, Paper} from "@mui/material";
+
 import Referral from "type/Referral";
+import {Par} from "component/typography";
 
 type Props = {
     referral: Referral,

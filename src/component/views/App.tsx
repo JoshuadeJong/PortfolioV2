@@ -1,14 +1,12 @@
 import React, {RefObject} from 'react';
-import {PaletteMode, ThemeProvider} from "@mui/material";
-import {CssBaseline} from '@mui/material/';
-import Container from "@mui/material/Container";
+import {PaletteMode, ThemeProvider, CssBaseline, Container} from "@mui/material";
 
 import {themeLight, themeDark} from "content/theme";
 import ResumeContent from "content/ResumeContent";
 import ResumeContext from "provider/ResumeContext";
 import SessionContext from "provider/SessionContext";
-import Views from "type/Views";
 
+import Views from "type/Views";
 import Header from "component/views/header";
 import Home from "component/views/home";
 import About from "component/views/about";
@@ -47,7 +45,9 @@ function App() {
         <ThemeProvider theme={currentTheme === 'light' ? themeLight : themeDark}>
             <CssBaseline/>
             <SessionContext.Provider
-                value={{viewRefs, currentView, setCurrentView, jumpToView, currentTheme, setCurrentTheme}}>
+                value={{viewRefs, currentView, setCurrentView, jumpToView, currentTheme, setCurrentTheme}}
+            >
+                {/* Resume */}
                 <ResumeContext.Provider value={ResumeContent}>
                     <Header/>
                     <Container maxWidth='lg'>
@@ -60,6 +60,7 @@ function App() {
                         <Connect id={Views.CONNECT} ref={viewRefs[Views.CONNECT]}/>
                     </Container>
                 </ResumeContext.Provider>
+
             </SessionContext.Provider>
         </ThemeProvider>
     );

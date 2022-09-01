@@ -1,10 +1,9 @@
 import React, {ForwardedRef} from 'react';
-import Grid from "@mui/material/Grid"
+import {Grid, Box} from "@mui/material"
 
+import ResumeContext from "provider/ResumeContext";
 import {Section, Center, MGrid} from "component/layout";
 import {SectionHeader, Par} from "component/typography";
-import ResumeContext from "provider/ResumeContext";
-import Box from "@mui/material/Box";
 
 type Props = {
     id: string,

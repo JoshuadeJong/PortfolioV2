@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from "@mui/material/IconButton";
+import {IconButton} from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 
 

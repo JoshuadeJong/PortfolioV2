@@ -1,6 +1,5 @@
 import React, {ForwardedRef} from 'react';
-import Grid from "@mui/material/Grid"
-
+import {Grid} from "@mui/material"
 
 import ResumeContext from "provider/ResumeContext";
 import {Section} from "component/layout";

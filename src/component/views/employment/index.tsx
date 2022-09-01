@@ -1,12 +1,10 @@
 import React, {ForwardedRef} from 'react';
-import {Grid, Tab, Tabs,} from "@mui/material";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import {Grid, Tab, Tabs, Container, Box} from "@mui/material";
 
+import ResumeContext from "provider/ResumeContext";
 import {Section} from "component/layout";
 import {HighlightText, SectionHeader} from "component/typography";
 import TabPanel from "./components/TabPanel";
-import ResumeContext from "provider/ResumeContext";
 import TabContent from "./components/TabContent";
 import TabMenu from "./components/TabMenu";
 

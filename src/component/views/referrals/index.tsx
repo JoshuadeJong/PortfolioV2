@@ -1,10 +1,9 @@
 import React, {ForwardedRef} from 'react';
-import Grid from "@mui/material/Grid"
+import {Grid, Container} from "@mui/material"
 
+import ResumeContext from "provider/ResumeContext";
 import {Section} from "component/layout";
 import {SectionHeader} from "component/typography";
-import Container from "@mui/material/Container";
-import ResumeContext from "provider/ResumeContext";
 import ReferralCard from "./components/ReferralCard";
 
 
@@ -15,7 +14,6 @@ type Props = {
 const Referrals = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const {id} = props
     const {referrals} = React.useContext(ResumeContext);
-
 
     return (
         <div id={id} ref={ref}>

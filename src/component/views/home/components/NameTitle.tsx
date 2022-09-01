@@ -1,14 +1,18 @@
 import React from 'react';
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import {Typography, Box, Container} from "@mui/material";
+
 import {GitHubBtn, LinkedinBtn, GetInTouchBtn} from "component/buttons";
-import ResumeContext from "provider/ResumeContext";
 import {HighlightText} from "component/typography";
-import Container from "@mui/material/Container";
 
+type Props = {
+    name: string,
+    github: string,
+    linkedin: string,
+    email: string,
+}
 
-function NameTitle() {
-    const {nameFirst, github, email, linkedin} = React.useContext(ResumeContext);
+function NameTitle(props: Props) {
+    const {name, github, email, linkedin} = props
 
     return (
         <Box
@@ -27,7 +31,7 @@ function NameTitle() {
                         color: 'text.secondary'
                     }}
                 >
-                    Hi, I'm {nameFirst}!
+                    Hi, I'm {name}!
                 </Typography>
                 <Typography
                     variant="h1"

@@ -1,7 +1,6 @@
 import React from 'react';
-import IconButton from "@mui/material/IconButton";
+import {IconButton} from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import ResumeContext from "provider/ResumeContext";
 
 type Props = {
     link: string,
