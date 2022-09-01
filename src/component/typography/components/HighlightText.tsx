@@ -1,22 +1,22 @@
-import React from 'react';
-import {Box} from "@mui/material";
+import React from "react";
+import { Box } from "@mui/material";
 
 type Props = {
-    children?: React.ReactNode,
+  children?: React.ReactNode;
 };
 
 function HighlightText(props: Props) {
-    const {children} = props
-    return (
-        <Box
-            sx={{
-                color: 'primary.main',
-                display: 'inline-block',
-            }}
-        >
-            {children}
-        </Box>
-    )
+  const { children } = props;
+  return (
+    <Box
+      sx={{
+        color: "primary.main",
+        display: "inline-block",
+      }}
+    >
+      {children}
+    </Box>
+  );
 }
 
 export default HighlightText;
