@@ -26,7 +26,12 @@ function App() {
     } else {
       setTimeout(() => {
         const id = hash.replace("#", "");
-        document.getElementById(id)?.scrollIntoView();
+        const element = document.getElementById(id);
+        if (element != null) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo(0, 0);
+        }
       }, 0);
     }
   }, [pathname, hash, key]);
