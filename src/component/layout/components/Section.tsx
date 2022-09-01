@@ -1,25 +1,22 @@
-import React from 'react';
-import Box from "@mui/material/Box";
+import React from "react";
+import { Box } from "@mui/material";
 
 type Props = {
-    backgroundColor: string,
-    children?: React.ReactNode,
+  children?: React.ReactNode;
 };
 
 function Section(props: Props) {
-    const {backgroundColor, children} = props
-    return (
-        <Box
-            sx={{
-                width: '100%',
-                backgroundColor: backgroundColor,
-                paddingTop: '15vh',
-                paddingBottom: '15vh',
-            }}
-        >
-            {children}
-        </Box>
-    )
+  const { children } = props;
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        paddingBottom: "10vh",
+      }}
+    >
+      {children}
+    </Box>
+  );
 }
 
 export default Section;

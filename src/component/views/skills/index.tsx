@@ -1,38 +1,53 @@
-import React, {ForwardedRef} from 'react';
-import Grid from "@mui/material/Grid"
-import Box from '@mui/material/Box';
+import React, { ForwardedRef } from "react";
+import { Grid } from "@mui/material";
 
-import {Page, Section, Center} from "component/layout";
-import PageHeader from "component/sectionHeader";
 import ResumeContext from "provider/ResumeContext";
+import { Section } from "component/layout";
+import { SectionText } from "component/typography";
+import SkillCard from "./components/SkillCard";
 
 type Props = {
-    id: string,
+  id: string;
 };
 
-const Skills = React.forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-    const {id} = props;
+const Skills = React.forwardRef(
+  (props: Props, ref: ForwardedRef<HTMLDivElement>) => {
+    const { id } = props;
+    const { skills } = React.useContext(ResumeContext);
 
     return (
-        <div id={id} ref={ref}>
-            <Section backgroundColor='primary.dark'>
-                <Page maxWidth='md'>
-                    <Grid container spacing={4}>
-                        <Grid item xs={12}>
-                            <PageHeader text='Skills' count={3}/>
-                            <Box
-                                sx={{
-                                    color: 'text.light'
-                                }}
-                            >
-                                <p>Why Hello there</p>
-                            </Box>
-                        </Grid>
-                    </Grid>
-                </Page>
-            </Section>
-        </div>
-    )
-})
+      <div id={id} ref={ref}>
+        <Section>
+          <Grid container spacing={4}>
+            <Grid
+              item
+              md={4}
+              sm={12}
+              sx={{
+                textAlign: {
+                  md: "left",
+                  xs: "center",
+                },
+              }}
+            >
+              <SectionText display="block">
+                Here is my toolkit for building great products!
+              </SectionText>
+            </Grid>
+            <Grid container item md={8} sm={12} spacing={2}>
+              {skills.map((skill) => {
+                return (
+                  <Grid item xs={4} sm={3} md={2}>
+                    <SkillCard skill={skill} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+        </Section>
+      </div>
+    );
+  }
+);
 
 export default Skills;

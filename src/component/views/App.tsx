@@ -1,56 +1,84 @@
-import React, {RefObject} from 'react';
-import {ThemeProvider} from "@mui/material";
+import React, { RefObject } from "react";
+import {
+  PaletteMode,
+  ThemeProvider,
+  CssBaseline,
+  Container,
+} from "@mui/material";
 
-import theme from "constant/theme";
+import { themeLight, themeDark } from "content/theme";
+import ResumeContent from "content/ResumeContent";
 import ResumeContext from "provider/ResumeContext";
-import resume from "content/resume";
-import StateContext from "provider/StateContext";
-import Views from "constant/views";
+import SessionContext from "provider/SessionContext";
 
-import Header from "component/header";
+import Views from "type/Views";
+import Header from "component/views/header";
 import Home from "component/views/home";
-import WaveIn from "component/views/waveIn";
 import About from "component/views/about";
 import Employment from "component/views/employment";
 import Skills from "component/views/skills";
+import Projects from "component/views/projects";
+import Referrals from "component/views/referrals";
+import Connect from "component/views/connect";
 
 function App() {
+  const viewRefs: Record<Views, RefObject<HTMLDivElement>> = {
+    [Views.HOME]: React.createRef<HTMLDivElement>(),
+    [Views.ABOUT]: React.createRef<HTMLDivElement>(),
+    [Views.EMPLOYMENT]: React.createRef<HTMLDivElement>(),
+    [Views.SKILLS]: React.createRef<HTMLDivElement>(),
+    [Views.PROJECTS]: React.createRef<HTMLDivElement>(),
+    [Views.REFERRALS]: React.createRef<HTMLDivElement>(),
+    [Views.CONNECT]: React.createRef<HTMLDivElement>(),
+  };
 
-    const viewRefs: Record<Views, RefObject<HTMLDivElement>> = {
-        [Views.HOME]: React.createRef<HTMLDivElement>(),
-        [Views.ABOUT]: React.createRef<HTMLDivElement>(),
-        [Views.EMPLOYMENT]: React.createRef<HTMLDivElement>(),
-        [Views.SKILLS]: React.createRef<HTMLDivElement>(),
-        [Views.PROJECTS]: React.createRef<HTMLDivElement>(),
-        [Views.CONNECT]: React.createRef<HTMLDivElement>(),
+  const [currentTheme, setCurrentTheme] = React.useState<PaletteMode>("dark");
+  const [currentView, setCurrentView] = React.useState(
+    Views[window.location.hash as keyof typeof Views] || Views.HOME
+  );
+  const jumpToView = (newView: Views) => {
+    setCurrentView(newView);
+    if (window.history) {
+      window.history.replaceState(null, "", `#${newView}`);
+      console.log(viewRefs[newView].current);
+      viewRefs[newView].current?.scrollIntoView();
+    } else {
+      window.location.hash = `#${newView}`;
     }
+  };
 
-    const [currentView, setCurrentView] = React.useState(Views[window.location.hash as keyof typeof Views] || Views.HOME)
-    const jumpToView = (newView: Views) => {
-        setCurrentView(newView)
-        if(window.history) {
-            window.history.replaceState(null, "", `#${newView}`)
-            console.log(viewRefs[newView].current)
-            viewRefs[newView].current?.scrollIntoView()
-        } else {
-            window.location.hash = `#${newView}`
-        }
-    }
-
-    return (
-      <ThemeProvider theme={theme}>
-        <StateContext.Provider value={{currentView, setCurrentView, jumpToView, viewRefs}}>
-            <ResumeContext.Provider value={resume}>
-                <Header/>
-                <Home id={Views.HOME} ref={viewRefs[Views.HOME]}/>
-                <WaveIn/>
-                <About id={Views.ABOUT} ref={viewRefs[Views.ABOUT]}/>
-                <Employment id={Views.EMPLOYMENT} ref={viewRefs[Views.EMPLOYMENT]}/>
-                <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]}/>
-            </ResumeContext.Provider>
-        </StateContext.Provider>
-      </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={currentTheme === "light" ? themeLight : themeDark}>
+      <CssBaseline />
+      <SessionContext.Provider
+        value={{
+          viewRefs,
+          currentView,
+          setCurrentView,
+          jumpToView,
+          currentTheme,
+          setCurrentTheme,
+        }}
+      >
+        {/* Resume */}
+        <ResumeContext.Provider value={ResumeContent}>
+          <Header />
+          <Container maxWidth="lg">
+            <Home id={Views.HOME} ref={viewRefs[Views.HOME]} />
+            <About id={Views.ABOUT} ref={viewRefs[Views.ABOUT]} />
+            <Employment
+              id={Views.EMPLOYMENT}
+              ref={viewRefs[Views.EMPLOYMENT]}
+            />
+            <Projects id={Views.PROJECTS} ref={viewRefs[Views.PROJECTS]} />
+            <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]} />
+            <Referrals id={Views.REFERRALS} ref={viewRefs[Views.REFERRALS]} />
+            <Connect id={Views.CONNECT} ref={viewRefs[Views.CONNECT]} />
+          </Container>
+        </ResumeContext.Provider>
+      </SessionContext.Provider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

@@ -1,60 +1,50 @@
-import React from 'react';
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import {GitHubBtn, LinkedinBtn, GetInTouchBtn} from "component/buttons";
-import ResumeContext from "provider/ResumeContext";
+import React from "react";
+import { Typography, Box, Container } from "@mui/material";
 
+import { GitHubBtn, LinkedinBtn, GetInTouchBtn } from "component/buttons";
+import { HighlightText } from "component/typography";
 
-function NameTitle() {
-    const {name, title, currentEmployer, currentEmployerLink} = React.useContext(ResumeContext);
+type Props = {
+  name: string;
+  github: string;
+  linkedin: string;
+  email: string;
+};
 
-    const handleCompanyClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        // @ts-ignore
-        window.open(currentEmployerLink);
-    }
+function NameTitle(props: Props) {
+  const { name, github, email, linkedin } = props;
 
-    return (
-        <Box
-            width='100%'
+  return (
+    <Box
+      width="100%"
+      sx={{
+        textAlign: "center",
+      }}
+    >
+      <Container maxWidth="md" disableGutters={true}>
+        <Typography
+          variant="h5"
+          sx={{
+            color: "text.secondary",
+          }}
         >
-            <Typography
-                variant="h1"
-                sx={{
-                    fontSize: '5.5rem',
-                    fontWeight: 500,
-                }}
-            >
-                {name}
-            </Typography>
-            <Typography
-                variant="h6"
-                sx={{
-                    fontWeight: 300,
-                    color: 'text.secondary'
-                }}
-            >
-                <span>
-                    {title} at
-                    {" "}
-                    <Link
-                        // @ts-ignore
-                        onClick={handleCompanyClick}
-                        sx={{
-                            cursor: "pointer",
-                            fontWeight: 300,
-                            color: 'text.secondary'
-                        }}
-                    >
-                        {currentEmployer}
-                    </Link>
-                </span>
-            </Typography>
-            <GitHubBtn size="large"/>
-            <LinkedinBtn size="large"/>
-            <GetInTouchBtn size="large"/>
-        </Box>
-    )
+          Hi, I'm {name}!
+        </Typography>
+        <Typography
+          variant="h1"
+          sx={{
+            marginBottom: "2vh",
+          }}
+        >
+          I build <HighlightText>products</HighlightText> and awesome{" "}
+          <HighlightText>teams</HighlightText>.
+        </Typography>
+        <GitHubBtn size="large" link={github} />
+        <LinkedinBtn size="large" link={linkedin} />
+        <GetInTouchBtn size="large" email={email} />
+      </Container>
+    </Box>
+  );
 }
 
 export default NameTitle;
