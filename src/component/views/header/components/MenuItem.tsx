@@ -12,7 +12,7 @@ type Props = {
   onClick: () => void;
 };
 
-function MobileMenuItem(props: Props) {
+function MenuItem(props: Props) {
   const { text, icon, onClick } = props;
   return (
     <ListItem disablePadding>
@@ -24,4 +24,4 @@ function MobileMenuItem(props: Props) {
   );
 }
 
-export default MobileMenuItem;
+export default MenuItem;

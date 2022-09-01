@@ -8,21 +8,24 @@ import {
   List,
   SwipeableDrawer,
 } from "@mui/material";
-import DescriptionIcon from "@mui/icons-material/Description";
+import { useNavigate } from "react-router-dom";
 
-import SessionContext from "provider/SessionContext";
-import Views from "type/Views";
+import View from "type/View";
 import MenuButton from "./components/MenuButton";
 import LinkButton from "./components/LinkButton";
+import MenuItem from "./components/MenuItem";
 import ResumeButton from "./components/ResumeButton";
-import MobileMenuItem from "./components/MobileMenuItem";
-import GetIcon from "./components/GetIcon";
 
-const pages = [Views.ABOUT, Views.EMPLOYMENT, Views.PROJECTS, Views.SKILLS];
+const desktop = [
+  View.PORTFOLIO_ABOUT,
+  View.PORTFOLIO_EMPLOYMENT,
+  View.PORTFOLIO_PROJECT,
+  View.PORTFOLIO_SKILLS,
+];
 
 function Header() {
-  const { jumpToView } = React.useContext(SessionContext);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -34,7 +37,6 @@ function Header() {
       ) {
         return;
       }
-
       setIsMenuOpen(open);
     };
 
@@ -42,7 +44,6 @@ function Header() {
     <AppBar position="relative" color="transparent" elevation={0}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Desktop */}
           <Box
             sx={{
               flexGrow: 0,
@@ -50,12 +51,21 @@ function Header() {
               marginLeft: "auto",
             }}
           >
-            {pages.map((page) => (
-              <LinkButton text={page} onClick={() => jumpToView(page)} />
+            {/* Buttons */}
+            {desktop.map((view) => (
+              <div id={view.displayName}>
+                <LinkButton
+                  text={view.displayName}
+                  path={view.path}
+                  navigate={navigate}
+                />
+              </div>
             ))}
+            {/*<Divider orientation="vertical" flexItem />*/}
             <ResumeButton
-              text="Resume"
-              onClick={() => console.log("Implement the resume button")}
+              text={View.RESUME.displayName}
+              path={View.RESUME.path}
+              navigate={navigate}
             />
           </Box>
 
@@ -68,45 +78,40 @@ function Header() {
             }}
           >
             <MenuButton onClick={toggleDrawer(true)} />
-            <SwipeableDrawer
-              anchor="top"
-              open={isMenuOpen}
-              onClose={toggleDrawer(false)}
-              onOpen={toggleDrawer(true)}
-            >
-              <List>
-                {pages.map((page) => (
-                  <MobileMenuItem
-                    text={page}
-                    icon={<GetIcon view={page} />}
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      jumpToView(page);
-                    }}
-                  />
-                ))}
-                <MobileMenuItem
-                  text={Views.CONNECT}
-                  icon={<GetIcon view={Views.CONNECT} />}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    jumpToView(Views.CONNECT);
-                  }}
-                />
-              </List>
-              <Divider />
-              <List>
-                <MobileMenuItem
-                  text="Resume"
-                  icon={<DescriptionIcon />}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    console.log("Implement the resume button");
-                  }}
-                />
-              </List>
-            </SwipeableDrawer>
           </Box>
+
+          <SwipeableDrawer
+            anchor="top"
+            open={isMenuOpen}
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}
+          >
+            <List>
+              {desktop.map((view) => (
+                <MenuItem
+                  text={view.displayName}
+                  /* @ts-ignore */
+                  icon={<view.icon />}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    console.log("Implement this!");
+                  }}
+                />
+              ))}
+            </List>
+            <Divider />
+            <List>
+              <MenuItem
+                text={View.RESUME.displayName}
+                /* @ts-ignore */
+                icon={<View.RESUME.icon />}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  console.log("Implement the resume button");
+                }}
+              />
+            </List>
+          </SwipeableDrawer>
         </Toolbar>
       </Container>
     </AppBar>

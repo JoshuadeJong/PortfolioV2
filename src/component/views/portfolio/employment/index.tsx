@@ -1,0 +1,59 @@
+import React, { ForwardedRef } from "react";
+import { Grid, Tab, Tabs, Container, Box } from "@mui/material";
+
+import ResumeContext from "provider/ResumeContext";
+import { Section } from "component/layout";
+import { HighlightText, SectionHeader } from "component/typography";
+import TabPanel from "./components/TabPanel";
+import TabContent from "./components/TabContent";
+import TabMenu from "./components/TabMenu";
+
+type Props = {};
+
+function Employment(props: Props) {
+  const {} = props;
+  const { career } = React.useContext(ResumeContext);
+  const [value, setValue] = React.useState(0);
+
+  return (
+    <Section>
+      <Container maxWidth="md" disableGutters={true}>
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <SectionHeader>Awesome places I've worked at!</SectionHeader>
+          </Grid>
+          <Grid
+            item
+            sx={{
+              width: {
+                md: "20%",
+                sm: "100%",
+                xs: "100%",
+              },
+            }}
+          >
+            <TabMenu value={value} setValue={setValue} career={career} />
+          </Grid>
+          <Grid
+            item
+            sx={{
+              width: {
+                md: "80%",
+                sm: "100%",
+              },
+            }}
+          >
+            {career.map((employment, index) => {
+              return (
+                <TabPanel value={value} index={index}>
+                  <TabContent employment={employment} />
+                </TabPanel>
+              );
+            })}
+          </Grid>
+        </Grid>
+      </Container>
+    </Section>
+  );
+}
+export default Employment;

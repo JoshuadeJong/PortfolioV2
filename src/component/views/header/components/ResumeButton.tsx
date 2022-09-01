@@ -1,18 +1,26 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { NavigateFunction } from "react-router-dom";
 
 type Props = {
   text: string;
-  onClick: () => void;
+  path: string;
+  navigate: NavigateFunction;
 };
 
-function LinkButton(props: Props) {
-  const { text, onClick } = props;
+function ResumeButton(props: Props) {
+  const { text, path, navigate } = props;
+
+  const handleOnClick = React.useCallback(
+    () => navigate(path, { replace: true }),
+    [navigate]
+  );
+
   return (
     <Button
       key={text}
-      variant={"outlined"}
-      onClick={onClick}
+      variant="outlined"
+      onClick={handleOnClick}
       sx={{
         marginLeft: 1,
         pl: 3,
@@ -26,4 +34,4 @@ function LinkButton(props: Props) {
   );
 }
 
-export default LinkButton;
+export default ResumeButton;
