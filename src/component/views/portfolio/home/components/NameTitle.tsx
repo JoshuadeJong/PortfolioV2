@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Box, Container } from "@mui/material";
 
-import { GitHubBtn, LinkedinBtn, GetInTouchBtn } from "component/buttons";
+import { GitHubBtn, LinkedinBtn, EmailBtn } from "component/buttons";
 import { HighlightText } from "component/typography";
 
 type Props = {
@@ -41,7 +41,7 @@ function NameTitle(props: Props) {
         </Typography>
         <GitHubBtn size="large" link={github} />
         <LinkedinBtn size="large" link={linkedin} />
-        <GetInTouchBtn size="large" email={email} />
+        <EmailBtn size="large" email={email} />
       </Container>
     </Box>
   );

@@ -18,7 +18,7 @@ function Section(props: Props) {
       id={id}
       sx={{
         width: "100%",
-        paddingBottom: !noPadding ? "10vh" : "unset",
+        paddingBottom: !noPadding ? "8vh" : "unset",
       }}
     >
       {children}

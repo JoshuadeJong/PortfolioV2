@@ -1,6 +1,6 @@
-import GetInTouchBtn from "./components/GetInTouchBtn";
+import EmailBtn from "./components/EmailBtn";
 import GitHubBtn from "./components/GitHubBtn";
 import LinkedinBtn from "./components/LinkedinBtn";
 import LaunchBtn from "./components/LuanchBtn";
 
-export { GetInTouchBtn, GitHubBtn, LinkedinBtn, LaunchBtn };
+export { EmailBtn, GitHubBtn, LinkedinBtn, LaunchBtn };

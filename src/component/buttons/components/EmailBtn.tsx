@@ -7,7 +7,7 @@ type Props = {
   size: "small" | "medium" | "large";
 };
 
-function GetInTouchBtn(props: Props) {
+function EmailBtn(props: Props) {
   const { size, email } = props;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -21,4 +21,4 @@ function GetInTouchBtn(props: Props) {
   );
 }
 
-export default GetInTouchBtn;
+export default EmailBtn;
