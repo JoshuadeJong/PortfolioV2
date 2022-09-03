@@ -1,19 +1,17 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
 import { Grid, Container } from "@mui/material";
 
+import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section } from "component/layout";
 import { SectionHeader } from "component/typography";
 import ReferralCard from "./components/ReferralCard";
 
-type Props = {};
-
-function Referrals(props: Props) {
-  const {} = props;
+function Referrals() {
   const { referrals } = React.useContext(ResumeContext);
 
   return (
-    <Section>
+    <Section id={View.PORTFOLIO_REFERRALS.getHash()}>
       <Container maxWidth="md" disableGutters>
         <Grid container spacing={4}>
           <Grid item xs={12}>

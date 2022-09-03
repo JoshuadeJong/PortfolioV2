@@ -4,10 +4,7 @@ import ResumeContext from "provider/ResumeContext";
 import { Center } from "component/layout";
 import NameTitle from "./components/NameTitle";
 
-type Props = {};
-
-function Home(props: Props) {
-  const {} = props;
+function Home() {
   const { nameFirst, github, linkedin, email } =
     React.useContext(ResumeContext);
   const [pageHeight, setPageHeight] = React.useState(0);

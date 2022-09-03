@@ -1,20 +1,18 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
 import { Grid } from "@mui/material";
 
+import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section } from "component/layout";
 import { SectionHeader } from "component/typography";
 import ProjectContainer from "./components/ProjectContainer";
 import ProjectCard from "./components/ProjectCard";
 
-type Props = {};
-
-function Projects(props: Props) {
-  const {} = props;
+function Projects() {
   const { projects } = React.useContext(ResumeContext);
 
   return (
-    <Section>
+    <Section id={View.PORTFOLIO_PROJECT.getHash()}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <SectionHeader>Here are a few of my favorite projects!</SectionHeader>

@@ -58,6 +58,10 @@ class View {
     readonly path: string
   ) {}
 
+  getHash() {
+    return this.path.split("#")[1];
+  }
+
   toString() {
     return this.displayName;
   }

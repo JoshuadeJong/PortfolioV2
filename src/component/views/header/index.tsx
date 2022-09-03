@@ -24,9 +24,13 @@ const desktop = [
 ];
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navigate = useNavigate();
+  const handleOnClick = React.useCallback(
+    (path: string) => navigate(path, { replace: true }),
+    [navigate]
+  );
 
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -56,16 +60,14 @@ function Header() {
               <div id={view.displayName}>
                 <LinkButton
                   text={view.displayName}
-                  path={view.path}
-                  navigate={navigate}
+                  onClick={() => handleOnClick(view.path)}
                 />
               </div>
             ))}
             {/*<Divider orientation="vertical" flexItem />*/}
             <ResumeButton
               text={View.RESUME.displayName}
-              path={View.RESUME.path}
-              navigate={navigate}
+              onClick={() => handleOnClick(View.RESUME.path)}
             />
           </Box>
 
@@ -94,7 +96,7 @@ function Header() {
                   icon={<view.icon />}
                   onClick={() => {
                     setIsMenuOpen(false);
-                    console.log("Implement this!");
+                    handleOnClick(view.path);
                   }}
                 />
               ))}
@@ -107,7 +109,7 @@ function Header() {
                 icon={<View.RESUME.icon />}
                 onClick={() => {
                   setIsMenuOpen(false);
-                  console.log("Implement the resume button");
+                  handleOnClick(View.RESUME.path);
                 }}
               />
             </List>

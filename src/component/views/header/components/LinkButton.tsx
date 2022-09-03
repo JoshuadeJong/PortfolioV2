@@ -1,26 +1,19 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { NavigateFunction } from "react-router-dom";
 
 type Props = {
   text: string;
-  path: string;
-  navigate: NavigateFunction;
+  onClick?: () => void;
 };
 
 function LinkButton(props: Props) {
-  const { text, path, navigate } = props;
-
-  const handleOnClick = React.useCallback(
-    () => navigate(path, { replace: true }),
-    [navigate]
-  );
+  const { text, onClick } = props;
 
   return (
     <Button
       key={text}
       variant="text"
-      onClick={handleOnClick}
+      onClick={onClick}
       sx={{
         marginLeft: 1,
         pl: 3,

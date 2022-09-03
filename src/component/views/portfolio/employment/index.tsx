@@ -1,22 +1,20 @@
-import React, { ForwardedRef } from "react";
-import { Grid, Tab, Tabs, Container, Box } from "@mui/material";
+import React from "react";
+import { Grid, Container } from "@mui/material";
 
+import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section } from "component/layout";
-import { HighlightText, SectionHeader } from "component/typography";
+import { SectionHeader } from "component/typography";
 import TabPanel from "./components/TabPanel";
 import TabContent from "./components/TabContent";
 import TabMenu from "./components/TabMenu";
 
-type Props = {};
-
-function Employment(props: Props) {
-  const {} = props;
+function Employment() {
   const { career } = React.useContext(ResumeContext);
   const [value, setValue] = React.useState(0);
 
   return (
-    <Section>
+    <Section id={View.PORTFOLIO_EMPLOYMENT.getHash()}>
       <Container maxWidth="md" disableGutters={true}>
         <Grid container spacing={4}>
           <Grid item xs={12}>

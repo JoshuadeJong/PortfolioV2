@@ -1,19 +1,17 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
 import { Grid } from "@mui/material";
 
+import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section } from "component/layout";
 import { SectionText } from "component/typography";
 import SkillCard from "./components/SkillCard";
 
-type Props = {};
-
-function Skills(props: Props) {
-  const {} = props;
+function Skills() {
   const { skills } = React.useContext(ResumeContext);
 
   return (
-    <Section>
+    <Section id={View.PORTFOLIO_SKILLS.getHash()}>
       <Grid container spacing={4}>
         <Grid
           item

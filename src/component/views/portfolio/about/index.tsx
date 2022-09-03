@@ -1,14 +1,12 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
 import { Grid, Box } from "@mui/material";
 
+import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section, Center, MGrid } from "component/layout";
 import { SectionHeader, Par } from "component/typography";
 
-type Props = {};
-
-function About(props: Props) {
-  const {} = props;
+function About() {
   const { about } = React.useContext(ResumeContext);
   const photoRef = React.createRef<HTMLDivElement>();
   const [photoHeight, setPhotoHeight] = React.useState(0);
@@ -25,7 +23,7 @@ function About(props: Props) {
   });
 
   return (
-    <Section>
+    <Section id={View.PORTFOLIO_ABOUT.getHash()}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <SectionHeader>Here is a bit about me.</SectionHeader>
