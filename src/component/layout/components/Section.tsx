@@ -3,17 +3,22 @@ import { Box } from "@mui/material";
 
 type Props = {
   id?: string;
+  noPadding?: boolean;
   children?: React.ReactNode;
 };
 
 function Section(props: Props) {
-  const { children, id } = props;
+  const { id, noPadding, children } = {
+    ...props,
+    noPadding: props.noPadding || false,
+  };
+
   return (
     <Box
       id={id}
       sx={{
         width: "100%",
-        paddingBottom: "10vh",
+        paddingBottom: !noPadding ? "10vh" : "unset",
       }}
     >
       {children}

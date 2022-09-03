@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Chip, Paper, Typography, Grid } from "@mui/material";
+import { Box, Chip, Paper, Typography, Grid, Stack } from "@mui/material";
 
 import Project from "type/Project";
 import { Par } from "component/typography";

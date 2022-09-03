@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Box,
   List,
   ListItem,
   ListItemIcon,
@@ -42,10 +43,9 @@ function TabContent(props: Props) {
       <List>
         {employment.bullet.map((bullet) => {
           return (
-            <ListItem>
-              <ListItemIcon sx={{ minWidth: "48px" }}>
-                <KeyboardArrowRightIcon fontSize="small" />
-              </ListItemIcon>
+            <ListItem
+              sx={{ display: "list-item", listStyleType: "disclosure-closed" }}
+            >
               <ListItemText
                 sx={{
                   textSize: "text.body2",

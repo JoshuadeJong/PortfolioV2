@@ -1,7 +1,7 @@
 import React from "react";
 
 import ResumeContext from "provider/ResumeContext";
-import { Center } from "component/layout";
+import { Center, Section } from "component/layout";
 import NameTitle from "./components/NameTitle";
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
 
   React.useEffect(() => {
     const updateWindowDimensions = () => {
-      setPageHeight(window.innerHeight - 64); // Remove the pixel height of the header
+      setPageHeight(window.innerHeight - 60); // Remove the pixel height of the header
     };
     updateWindowDimensions();
     window.addEventListener("resize", updateWindowDimensions);
@@ -19,14 +19,16 @@ function Home() {
   }, []);
 
   return (
-    <Center minHeight={`${pageHeight}px`}>
-      <NameTitle
-        name={nameFirst}
-        github={github}
-        linkedin={linkedin}
-        email={email}
-      />
-    </Center>
+    <Section noPadding>
+      <Center minHeight={`${pageHeight}px`}>
+        <NameTitle
+          name={nameFirst}
+          github={github}
+          linkedin={linkedin}
+          email={email}
+        />
+      </Center>
+    </Section>
   );
 }
 

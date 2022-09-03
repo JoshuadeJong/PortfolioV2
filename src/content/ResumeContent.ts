@@ -132,10 +132,6 @@ const ResumeContent: Resume = {
       name: "Graphql",
       iconPath: "skills/graphql.png",
     },
-    {
-      name: "GRPC",
-      iconPath: "skills/grpc.png",
-    },
 
     // Infra Stuff
     {

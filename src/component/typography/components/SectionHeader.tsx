@@ -16,20 +16,12 @@ function SectionHeader(props: Props) {
       <Box
         sx={{
           display: {
-            md: "none",
-            sm: "block",
+            sm: "none",
+            xs: "block",
           },
           textAlign: "center",
         }}
       >
-        <Box
-          sx={{
-            width: "30%",
-            height: "4px",
-            backgroundColor: "primary.main",
-            margin: "32px auto",
-          }}
-        />
         <SectionText display="block">{children}</SectionText>
       </Box>
 
@@ -37,8 +29,7 @@ function SectionHeader(props: Props) {
       <Box
         sx={{
           display: {
-            md: "flex",
-            sm: "none",
+            sm: "flex",
             xs: "none",
           },
           flexDirection: "row",
@@ -48,10 +39,7 @@ function SectionHeader(props: Props) {
         <SectionText display="inline-block">{children}</SectionText>
         <Box
           sx={{
-            display: {
-              md: "flex",
-              sm: "none",
-            },
+            display: "flex",
             flex: 1,
             height: "4px",
             backgroundColor: "primary.main",
