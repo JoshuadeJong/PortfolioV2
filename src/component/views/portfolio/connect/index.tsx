@@ -7,7 +7,7 @@ import { Section } from "component/layout";
 import { Par, SectionHeader } from "component/typography";
 
 function Connect() {
-  const { email } = React.useContext(ResumeContext);
+  const { email, connectMessage } = React.useContext(ResumeContext);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     window.open(`mailto:${email}`);
@@ -21,11 +21,7 @@ function Connect() {
             <SectionHeader>Let's connect!</SectionHeader>
           </Grid>
           <Grid item xs={12} sx={{ textAlign: "center" }}>
-            <Par>
-              Although I’m not currently looking for any new opportunities, I'm
-              always open to hearing about them. Whether you have a question or
-              just want to say hi, I’ll try my best to get back to you!
-            </Par>
+            <Par>{connectMessage}</Par>
           </Grid>
           <Grid item xs={12} sx={{ textAlign: "center" }}>
             <Button variant="outlined" onClick={handleClick} size="large">

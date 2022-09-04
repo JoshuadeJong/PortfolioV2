@@ -16,21 +16,30 @@ function SectionHeader(props: Props) {
       <Box
         sx={{
           display: {
-            sm: "none",
-            xs: "block",
+            md: "none",
+            sm: "block",
           },
           textAlign: "center",
         }}
       >
         <SectionText display="block">{children}</SectionText>
+        <Box
+          sx={{
+            height: "4px",
+            backgroundColor: "primary.main",
+            marginTop: "8px",
+            // marginLeft: "32px",
+            // marginRight: "32px",
+          }}
+        />
       </Box>
 
       {/* Desktop View */}
       <Box
         sx={{
           display: {
-            sm: "flex",
-            xs: "none",
+            md: "flex",
+            sm: "none",
           },
           flexDirection: "row",
           alignItems: "center",

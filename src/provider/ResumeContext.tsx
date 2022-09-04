@@ -12,6 +12,7 @@ const ResumeContext = React.createContext<Resume>({
   career: [],
   projects: [],
   referrals: [],
+  connectMessage: "",
 });
 
 export default ResumeContext;

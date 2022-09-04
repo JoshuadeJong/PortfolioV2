@@ -2,7 +2,7 @@ import Resume from "type/Resume";
 
 const ResumeContent: Resume = {
   nameFull: "Joshua de Jong",
-  nameFirst: "Joshua",
+  nameFirst: "Josh",
   email: "joshuakdejong@gmail.com",
   github: "https://github.com/JoshuadeJong",
   linkedin: "https://www.linkedin.com/in/joshua-de-jong/",
@@ -223,6 +223,8 @@ const ResumeContent: Resume = {
       company: "Amazon",
     },
   ],
+  connectMessage:
+    "Although I’m not currently looking for any new opportunities, I'm always open to hearing about them. Whether you have a question or just want to say hi, I’ll try my best to get back to you!",
 };
 
 export default ResumeContent;
