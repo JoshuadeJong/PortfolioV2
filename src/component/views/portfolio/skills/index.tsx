@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import View from "type/View";
 import ResumeContext from "provider/ResumeContext";
 import { Section } from "component/layout";
-import { SectionText } from "component/typography";
+import { SectionHeader, SectionText } from "component/typography";
 import SkillCard from "./components/SkillCard";
 
 function Skills() {
@@ -24,9 +24,9 @@ function Skills() {
             },
           }}
         >
-          <SectionText display="block">
+          <SectionHeader line="sm">
             Here is my toolkit for building great products!
-          </SectionText>
+          </SectionHeader>
         </Grid>
         <Grid container item md={8} sm={12} spacing={2}>
           {skills.map((skill) => {

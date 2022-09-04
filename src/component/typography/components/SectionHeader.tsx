@@ -4,11 +4,15 @@ import { Box } from "@mui/material";
 import SectionText from "./SectionText";
 
 type Props = {
+  line?: "all" | "sm" | "md" | "none";
   children?: React.ReactNode;
 };
 
 function SectionHeader(props: Props) {
-  const { children } = props;
+  const { line, children } = {
+    ...props,
+    line: props.line || "all",
+  };
 
   return (
     <>
@@ -25,11 +29,10 @@ function SectionHeader(props: Props) {
         <SectionText display="block">{children}</SectionText>
         <Box
           sx={{
+            display: line === "all" || line === "sm" ? "block" : "none",
             height: "4px",
             backgroundColor: "primary.main",
             marginTop: "8px",
-            // marginLeft: "32px",
-            // marginRight: "32px",
           }}
         />
       </Box>
@@ -39,7 +42,7 @@ function SectionHeader(props: Props) {
         sx={{
           display: {
             md: "flex",
-            sm: "none",
+            xs: "none",
           },
           flexDirection: "row",
           alignItems: "center",
@@ -48,7 +51,7 @@ function SectionHeader(props: Props) {
         <SectionText display="inline-block">{children}</SectionText>
         <Box
           sx={{
-            display: "flex",
+            display: line === "all" || line === "md" ? "flex" : "none",
             flex: 1,
             height: "4px",
             backgroundColor: "primary.main",
