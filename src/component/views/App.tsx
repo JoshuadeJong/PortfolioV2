@@ -1,4 +1,5 @@
-import React, { RefObject } from "react";
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import {
   PaletteMode,
   ThemeProvider,
@@ -7,75 +8,51 @@ import {
 } from "@mui/material";
 
 import { themeLight, themeDark } from "content/theme";
-import ResumeContent from "content/ResumeContent";
-import ResumeContext from "provider/ResumeContext";
 import SessionContext from "provider/SessionContext";
+import View from "type/View";
 
-import Views from "type/Views";
-import Header from "component/views/header";
-import Home from "component/views/home";
-import About from "component/views/about";
-import Employment from "component/views/employment";
-import Skills from "component/views/skills";
-import Projects from "component/views/projects";
-import Referrals from "component/views/referrals";
-import Connect from "component/views/connect";
+// Views
+import Error from "./error";
+import Header from "./header";
+import Portfolio from "./portfolio";
 
 function App() {
-  const viewRefs: Record<Views, RefObject<HTMLDivElement>> = {
-    [Views.HOME]: React.createRef<HTMLDivElement>(),
-    [Views.ABOUT]: React.createRef<HTMLDivElement>(),
-    [Views.EMPLOYMENT]: React.createRef<HTMLDivElement>(),
-    [Views.SKILLS]: React.createRef<HTMLDivElement>(),
-    [Views.PROJECTS]: React.createRef<HTMLDivElement>(),
-    [Views.REFERRALS]: React.createRef<HTMLDivElement>(),
-    [Views.CONNECT]: React.createRef<HTMLDivElement>(),
-  };
-
   const [currentTheme, setCurrentTheme] = React.useState<PaletteMode>("dark");
-  const [currentView, setCurrentView] = React.useState(
-    Views[window.location.hash as keyof typeof Views] || Views.HOME
-  );
-  const jumpToView = (newView: Views) => {
-    setCurrentView(newView);
-    if (window.history) {
-      window.history.replaceState(null, "", `#${newView}`);
-      console.log(viewRefs[newView].current);
-      viewRefs[newView].current?.scrollIntoView();
+
+  const { pathname, hash, key } = useLocation();
+  React.useEffect(() => {
+    if (hash === "") {
+      window.scrollTo(0, 0);
     } else {
-      window.location.hash = `#${newView}`;
+      setTimeout(() => {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element != null) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }, 0);
     }
-  };
+  }, [pathname, hash, key]);
 
   return (
     <ThemeProvider theme={currentTheme === "light" ? themeLight : themeDark}>
       <CssBaseline />
-      <SessionContext.Provider
-        value={{
-          viewRefs,
-          currentView,
-          setCurrentView,
-          jumpToView,
-          currentTheme,
-          setCurrentTheme,
-        }}
-      >
-        {/* Resume */}
-        <ResumeContext.Provider value={ResumeContent}>
-          <Header />
-          <Container maxWidth="lg">
-            <Home id={Views.HOME} ref={viewRefs[Views.HOME]} />
-            <About id={Views.ABOUT} ref={viewRefs[Views.ABOUT]} />
-            <Employment
-              id={Views.EMPLOYMENT}
-              ref={viewRefs[Views.EMPLOYMENT]}
-            />
-            <Projects id={Views.PROJECTS} ref={viewRefs[Views.PROJECTS]} />
-            <Skills id={Views.SKILLS} ref={viewRefs[Views.SKILLS]} />
-            <Referrals id={Views.REFERRALS} ref={viewRefs[Views.REFERRALS]} />
-            <Connect id={Views.CONNECT} ref={viewRefs[Views.CONNECT]} />
-          </Container>
-        </ResumeContext.Provider>
+      <SessionContext.Provider value={{ currentTheme, setCurrentTheme }}>
+        <Header />
+        <Container maxWidth="lg">
+          {/*  Routing */}
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path={View.PORTFOLIO.path} element={<Portfolio />} />
+            <Route path={View.BLOG.path} element={<Error code={501} />} />
+            <Route path={View.TUTORIAL.path} element={<Error code={501} />} />
+            <Route path={View.RESUME.path} element={<Error code={501} />} />
+
+            <Route path={"*"} element={<Error code={404} />} />
+          </Routes>
+        </Container>
       </SessionContext.Provider>
     </ThemeProvider>
   );

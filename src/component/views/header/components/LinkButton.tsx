@@ -3,15 +3,16 @@ import { Button } from "@mui/material";
 
 type Props = {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 function LinkButton(props: Props) {
   const { text, onClick } = props;
+
   return (
     <Button
       key={text}
-      variant={"text"}
+      variant="text"
       onClick={onClick}
       sx={{
         marginLeft: 1,

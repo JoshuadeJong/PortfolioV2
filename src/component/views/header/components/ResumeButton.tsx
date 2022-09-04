@@ -3,15 +3,16 @@ import { Button } from "@mui/material";
 
 type Props = {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
-function LinkButton(props: Props) {
+function ResumeButton(props: Props) {
   const { text, onClick } = props;
+
   return (
     <Button
       key={text}
-      variant={"outlined"}
+      variant="outlined"
       onClick={onClick}
       sx={{
         marginLeft: 1,
@@ -26,4 +27,4 @@ function LinkButton(props: Props) {
   );
 }
 
-export default LinkButton;
+export default ResumeButton;

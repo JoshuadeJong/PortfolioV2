@@ -22,15 +22,16 @@ function SectionHeader(props: Props) {
           textAlign: "center",
         }}
       >
+        <SectionText display="block">{children}</SectionText>
         <Box
           sx={{
-            width: "30%",
             height: "4px",
             backgroundColor: "primary.main",
-            margin: "32px auto",
+            marginTop: "8px",
+            // marginLeft: "32px",
+            // marginRight: "32px",
           }}
         />
-        <SectionText display="block">{children}</SectionText>
       </Box>
 
       {/* Desktop View */}
@@ -39,7 +40,6 @@ function SectionHeader(props: Props) {
           display: {
             md: "flex",
             sm: "none",
-            xs: "none",
           },
           flexDirection: "row",
           alignItems: "center",
@@ -48,10 +48,7 @@ function SectionHeader(props: Props) {
         <SectionText display="inline-block">{children}</SectionText>
         <Box
           sx={{
-            display: {
-              md: "flex",
-              sm: "none",
-            },
+            display: "flex",
             flex: 1,
             height: "4px",
             backgroundColor: "primary.main",

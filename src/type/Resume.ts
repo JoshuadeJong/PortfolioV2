@@ -14,6 +14,7 @@ type Resume = {
   skills: Array<Skill>;
   projects: Array<Project>;
   referrals: Array<Referral>;
+  connectMessage: string;
 };
 
 export default Resume;
