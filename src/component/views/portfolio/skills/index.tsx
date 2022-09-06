@@ -29,9 +29,9 @@ function Skills() {
           </SectionHeader>
         </Grid>
         <Grid container item md={8} sm={12} spacing={2}>
-          {skills.map((skill) => {
+          {skills.map((skill, index) => {
             return (
-              <Grid item xs={4} sm={3} md={2}>
+              <Grid item xs={4} sm={3} md={2} key={`skill-${index}`}>
                 <SkillCard skill={skill} />
               </Grid>
             );

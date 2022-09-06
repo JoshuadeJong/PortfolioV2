@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Paper } from "@mui/material";
 
-import Referral from "type/Referral";
+import Referral from "type/portfolio/Referral";
 import { Par } from "component/typography";
 
 type Props = {

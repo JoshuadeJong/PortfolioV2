@@ -1,7 +1,7 @@
-import Employment from "type/Employment";
-import Skill from "type/Skill";
-import Project from "type/Project";
-import Referral from "type/Referral";
+import Employment from "type/portfolio/Employment";
+import Skill from "type/portfolio/Skill";
+import Project from "type/portfolio/Project";
+import Referral from "type/portfolio/Referral";
 
 type Resume = {
   nameFull: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Chip, Paper, Typography, Grid, Stack } from "@mui/material";
 
-import Project from "type/Project";
+import Project from "type/portfolio/Project";
 import { Par } from "component/typography";
 import { GitHubBtn, LaunchBtn } from "component/buttons";
 
@@ -31,9 +31,11 @@ function ProjectCard(props: Props) {
         >
           {project.text.map((paragraph, index) => {
             return (
-              <Par noMargin={index === project.text.length - 1}>
-                {paragraph}
-              </Par>
+              <Box key={`${project.title}-par-${index}`}>
+                <Par noMargin={index === project.text.length - 1}>
+                  {paragraph}
+                </Par>
+              </Box>
             );
           })}
         </Box>
@@ -44,9 +46,9 @@ function ProjectCard(props: Props) {
         }}
       >
         <Grid container spacing={1}>
-          {project.skills.map((skill) => {
+          {project.skills.map((skill, index) => {
             return (
-              <Grid item>
+              <Grid item key={`${project.title}-skill-${index}`}>
                 <Chip label={skill} size="small" variant="outlined" />
               </Grid>
             );

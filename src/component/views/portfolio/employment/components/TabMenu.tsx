@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 
-import Employment from "type/Employment";
+import Employment from "type/portfolio/Employment";
 
 type Props = {
   value: number;
@@ -18,7 +18,12 @@ function TabMenu(props: Props) {
 
   const RenderTabs = () => {
     return career.map((employment) => {
-      return <Tab label={employment.companyName} />;
+      return (
+        <Tab
+          key={`${employment.companyName}-tab`}
+          label={employment.companyName}
+        />
+      );
     });
   };
 

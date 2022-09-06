@@ -43,7 +43,11 @@ function Employment() {
           >
             {career.map((employment, index) => {
               return (
-                <TabPanel value={value} index={index}>
+                <TabPanel
+                  value={value}
+                  index={index}
+                  key={`${employment.companyName}-tabPanel`}
+                >
                   <TabContent employment={employment} />
                 </TabPanel>
               );

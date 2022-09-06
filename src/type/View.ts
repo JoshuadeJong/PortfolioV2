@@ -1,6 +1,7 @@
 import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
+import FlagIcon from "@mui/icons-material/Flag";
 import HomeIcon from "@mui/icons-material/Home";
 import FaceIcon from "@mui/icons-material/Face";
 import WorkIcon from "@mui/icons-material/Work";
@@ -13,6 +14,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 class View {
+  static readonly DEV = new View("dev", FlagIcon, "/dev");
   static readonly PORTFOLIO = new View("Portfolio", HomeIcon, "/portfolio");
   static readonly PORTFOLIO_ABOUT = new View(
     "About",

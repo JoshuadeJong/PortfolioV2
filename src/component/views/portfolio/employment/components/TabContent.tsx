@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
-import Employment from "type/Employment";
+import Employment from "type/portfolio/Employment";
 import { HighlightText } from "component/typography";
 import CompanyLink from "./CompanyLink";
 
@@ -41,9 +41,10 @@ function TabContent(props: Props) {
         {employment.startDate} -- {employment.endDate}
       </Typography>
       <List>
-        {employment.bullet.map((bullet) => {
+        {employment.bullet.map((bullet, index) => {
           return (
             <ListItem
+              key={`${employment.title}-bullet-${index}`}
               sx={{ display: "list-item", listStyleType: "disclosure-closed" }}
             >
               <ListItemText

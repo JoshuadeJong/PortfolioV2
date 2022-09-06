@@ -11,6 +11,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import View from "type/View";
+import FeatureFlag from "type/FeatureFlag";
+import SessionContext from "provider/SessionContext";
 import MenuButton from "./components/MenuButton";
 import LinkButton from "./components/LinkButton";
 import MenuItem from "./components/MenuItem";
@@ -24,6 +26,7 @@ const desktop = [
 ];
 
 function Header() {
+  const { featureFlags } = React.useContext(SessionContext);
   const navigate = useNavigate();
   const handleOnClick = React.useCallback(
     (path: string) => navigate(path, { replace: true }),
@@ -57,14 +60,23 @@ function Header() {
           >
             {/* Buttons */}
             {desktop.map((view) => (
-              <div id={view.displayName}>
+              <div id={view.displayName} key={view.displayName}>
                 <LinkButton
                   text={view.displayName}
                   onClick={() => handleOnClick(view.path)}
                 />
               </div>
             ))}
-            {/*<Divider orientation="vertical" flexItem />*/}
+            {/*// @ts-ignore*/}
+            {featureFlags[FeatureFlag.BLOG] && (
+              <>
+                <Divider orientation="vertical" flexItem />
+                <LinkButton
+                  text={View.BLOG.displayName}
+                  onClick={() => handleOnClick(View.BLOG.path)}
+                />
+              </>
+            )}
             <ResumeButton
               text={View.RESUME.displayName}
               onClick={() => handleOnClick(View.RESUME.path)}
@@ -91,6 +103,7 @@ function Header() {
             <List>
               {desktop.map((view) => (
                 <MenuItem
+                  key={view.displayName}
                   text={view.displayName}
                   /* @ts-ignore */
                   icon={<view.icon />}

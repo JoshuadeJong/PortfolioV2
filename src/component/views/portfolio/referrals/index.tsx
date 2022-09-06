@@ -19,7 +19,7 @@ function Referrals() {
         <Grid container item xs={12} spacing={4}>
           {referrals.map((referral, index) => {
             return (
-              <Grid item sm={4} xs={12} key={index}>
+              <Grid item sm={4} xs={12} key={`referral-${index}`}>
                 <Box
                   sx={{
                     width: "100%",

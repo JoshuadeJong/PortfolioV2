@@ -1,4 +1,4 @@
-import Resume from "type/Resume";
+import Resume from "type/portfolio/Resume";
 
 const ResumeContent: Resume = {
   nameFull: "Joshua de Jong",
@@ -149,7 +149,7 @@ const ResumeContent: Resume = {
   ],
   projects: [
     {
-      title: "Spotify Profile",
+      title: "Project 1",
       subTitle: "Feature  Project",
       text: [
         "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.",
@@ -167,7 +167,7 @@ const ResumeContent: Resume = {
         "https://steamcommunity.com/sharedfiles/filedetails/?id=1131494371",
     },
     {
-      title: "Spotify Profile",
+      title: "Project 2",
       subTitle: "Feature  Project",
       text: [
         "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.",
@@ -185,7 +185,7 @@ const ResumeContent: Resume = {
         "https://steamcommunity.com/sharedfiles/filedetails/?id=1131494371",
     },
     {
-      title: "Spotify Profile",
+      title: "Project 3",
       subTitle: "Feature  Project",
       text: [
         "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.",

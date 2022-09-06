@@ -19,7 +19,12 @@ function Projects() {
         </Grid>
         {projects.map((project, index) => {
           return (
-            <Grid item xs={12} sx={{ marginBottom: 4 }}>
+            <Grid
+              item
+              xs={12}
+              sx={{ marginBottom: 4 }}
+              key={`${project.title}-project`}
+            >
               <ProjectContainer
                 project={project}
                 imagePath={project.imagePath}

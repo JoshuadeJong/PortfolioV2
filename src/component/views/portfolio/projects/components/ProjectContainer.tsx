@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-import Project from "type/Project";
+import Project from "type/portfolio/Project";
 import { MGrid } from "component/layout";
 
 type Props = {

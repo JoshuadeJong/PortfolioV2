@@ -30,8 +30,12 @@ function About() {
         </Grid>
         <Grid item sm={12} md={6}>
           <div ref={photoRef}>
-            {about.map((text) => {
-              return <Par>{text}</Par>;
+            {about.map((text, index) => {
+              return (
+                <Box key={`about-par-${index}`}>
+                  <Par>{text}</Par>
+                </Box>
+              );
             })}
           </div>
         </Grid>

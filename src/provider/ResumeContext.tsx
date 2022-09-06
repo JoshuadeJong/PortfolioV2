@@ -1,5 +1,5 @@
 import React from "react";
-import Resume from "type/Resume";
+import Resume from "type/portfolio/Resume";
 
 const ResumeContext = React.createContext<Resume>({
   nameFull: "",

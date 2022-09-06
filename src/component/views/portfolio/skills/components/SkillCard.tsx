@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import Skill from "type/Skill";
+import Skill from "type/portfolio/Skill";
 import { Center } from "component/layout";
 
 type Props = {
