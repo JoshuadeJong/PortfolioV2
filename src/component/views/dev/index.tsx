@@ -32,7 +32,7 @@ function Dev() {
     <Page>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <SectionHeader>Feature Flags</SectionHeader>
+          <SectionHeader>Dev Feature Flags</SectionHeader>
         </Grid>
         <Grid item xs={12}>
           <List sx={{ width: "100%", bgcolor: "background.paper" }}>

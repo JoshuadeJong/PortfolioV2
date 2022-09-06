@@ -12,7 +12,7 @@ function Blog() {
     return <Error code={404} />;
   }
 
-  return <Box>This is the blog!</Box>;
+  return <Error code={501} />;
 }
 
 export default Blog;
