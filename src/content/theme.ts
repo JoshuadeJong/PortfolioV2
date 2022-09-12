@@ -31,8 +31,14 @@ const typography: TypographyOptions = {
 let themeLight = createTheme({
   palette: {
     mode: "light",
+    primary: {
+      main: "#00baff",
+    },
+    text: {
+      secondary: "#828282",
+    },
     background: {
-      default: "#fafafa",
+      default: "#f8f8f8",
       paper: "#fff",
     },
   },
@@ -47,11 +53,13 @@ let themeDark = createTheme({
     },
     text: {
       primary: "#fff",
-      secondary: "#7b89a8",
+      secondary: "#989898", //"#7b89a8",
     },
     background: {
       default: "#000a1f",
       paper: "#000f2e",
+      // @ts-ignore
+      transparent: "rgba(0,10,31,0.76)",
     },
   },
   typography: typography,

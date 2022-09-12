@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
 import View from "type/View";
-import ResumeContext from "provider/ResumeContext";
+import ResumeContext from "provider/portfolio/ResumeContext";
 import { Section } from "component/layout";
 import { Par, SectionHeader } from "component/typography";
 

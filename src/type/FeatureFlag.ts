@@ -1,14 +1,26 @@
+// Should the feature be on by default for development
+const isDev = process.env.NODE_ENV === "development";
+
 class FeatureFlag {
+  static readonly DEV = new FeatureFlag(
+    "Dev",
+    isDev,
+    "Enable the feature flag override page for the website."
+  );
   static readonly LIGHT_THEME = new FeatureFlag(
     "Light Theme",
-    false,
-    "Enable "
+    isDev,
+    "Enable the ability to switch to a primarily white theme for the website."
   );
   static readonly BLOG = new FeatureFlag(
     "Blog",
-    false,
-    "Enable the Blog pages for the website."
+    isDev,
+    "Enable the Blog/Tutorial pages for the website."
   );
+
+  static values(): Array<FeatureFlag> {
+    return Object.values(FeatureFlag);
+  }
 
   constructor(
     readonly name: string,

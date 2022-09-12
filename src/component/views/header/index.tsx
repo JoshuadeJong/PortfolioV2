@@ -1,135 +1,92 @@
 import React from "react";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Container,
-  Divider,
-  List,
-  SwipeableDrawer,
-} from "@mui/material";
+import { AppBar, Box, Toolbar, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import View from "type/View";
 import FeatureFlag from "type/FeatureFlag";
 import SessionContext from "provider/SessionContext";
-import MenuButton from "./components/MenuButton";
-import LinkButton from "./components/LinkButton";
-import MenuItem from "./components/MenuItem";
-import ResumeButton from "./components/ResumeButton";
-
-const desktop = [
-  View.PORTFOLIO_ABOUT,
-  View.PORTFOLIO_EMPLOYMENT,
-  View.PORTFOLIO_PROJECT,
-  View.PORTFOLIO_SKILLS,
-];
+import DesktopMenu from "./components/DesktopMenu";
+import MobileMenu from "./components/MobileMenu";
+import HideOnScroll from "./components/HideOnScroll";
 
 function Header() {
   const { featureFlags } = React.useContext(SessionContext);
+
+  let mainViews = [
+    View.PORTFOLIO,
+    // @ts-ignore
+    ...(featureFlags[FeatureFlag.BLOG] ? [View.BLOG] : []),
+    // @ts-ignore
+    ...(featureFlags[FeatureFlag.DEV] ? [View.DEV] : []),
+  ];
+
+  const subViews = new Map<View, Array<View>>([
+    [
+      View.PORTFOLIO,
+      [
+        View.PORTFOLIO_ABOUT,
+        View.PORTFOLIO_EMPLOYMENT,
+        View.PORTFOLIO_PROJECT,
+        View.PORTFOLIO_SKILLS,
+        View.PORTFOLIO_REFERRALS,
+        View.PORTFOLIO_CONNECT,
+      ],
+    ],
+    [View.BLOG, [View.BLOG_ARTICLE, View.BLOG_TUTORIAL]],
+  ]);
+
+  const [isHidden, setIsHidden] = React.useState(false);
+
   const navigate = useNavigate();
-  const handleOnClick = React.useCallback(
-    (path: string) => navigate(path, { replace: true }),
+  const handleLinkClick = React.useCallback(
+    (path: string, replace: boolean) => navigate(path, { replace: replace }),
     [navigate]
   );
 
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setIsMenuOpen(open);
-    };
-
   return (
-    <AppBar position="relative" color="transparent" elevation={0}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box
-            sx={{
-              flexGrow: 0,
-              display: { xs: "none", sm: "flex" },
-              marginLeft: "auto",
-            }}
-          >
-            {/* Buttons */}
-            {desktop.map((view) => (
-              <div id={view.displayName} key={view.displayName}>
-                <LinkButton
-                  text={view.displayName}
-                  onClick={() => handleOnClick(view.path)}
-                />
-              </div>
-            ))}
-            {/*// @ts-ignore*/}
-            {featureFlags[FeatureFlag.BLOG] && (
-              <>
-                <Divider orientation="vertical" flexItem />
-                <LinkButton
-                  text={View.BLOG.displayName}
-                  onClick={() => handleOnClick(View.BLOG.path)}
-                />
-              </>
-            )}
-            <ResumeButton
-              text={View.RESUME.displayName}
-              onClick={() => handleOnClick(View.RESUME.path)}
-            />
-          </Box>
-
-          {/* Mobile */}
-          <Box
-            sx={{
-              flexGrow: 0,
-              display: { xs: "flex", sm: "none" },
-              marginLeft: "auto",
-            }}
-          >
-            <MenuButton onClick={toggleDrawer(true)} />
-          </Box>
-
-          <SwipeableDrawer
-            anchor="top"
-            open={isMenuOpen}
-            onClose={toggleDrawer(false)}
-            onOpen={toggleDrawer(true)}
-          >
-            <List>
-              {desktop.map((view) => (
-                <MenuItem
-                  key={view.displayName}
-                  text={view.displayName}
-                  /* @ts-ignore */
-                  icon={<view.icon />}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    handleOnClick(view.path);
-                  }}
-                />
-              ))}
-            </List>
-            <Divider />
-            <List>
-              <MenuItem
-                text={View.RESUME.displayName}
-                /* @ts-ignore */
-                icon={<View.RESUME.icon />}
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  handleOnClick(View.RESUME.path);
-                }}
+    <HideOnScroll setIsHidden={setIsHidden}>
+      <AppBar
+        color="transparent"
+        sx={{
+          backdropFilter: "blur(20px)",
+          backgroundColor: "background.transparent",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: { xs: "none", sm: "flex" },
+                marginLeft: "auto",
+              }}
+            >
+              <DesktopMenu
+                mainViews={mainViews}
+                subViews={subViews}
+                handleLinkClick={handleLinkClick}
+                isHidden={isHidden}
               />
-            </List>
-          </SwipeableDrawer>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Box>
+
+            {/* Mobile */}
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: { xs: "flex", sm: "none" },
+                marginLeft: "auto",
+              }}
+            >
+              <MobileMenu
+                mainViews={mainViews}
+                subViews={subViews}
+                handleLinkClick={handleLinkClick}
+              />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </HideOnScroll>
   );
 }
 

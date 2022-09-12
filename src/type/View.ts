@@ -10,11 +10,10 @@ import TerminalIcon from "@mui/icons-material/Terminal";
 import EmailIcon from "@mui/icons-material/Email";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import DescriptionIcon from "@mui/icons-material/Description";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 
 class View {
-  static readonly DEV = new View("dev", FlagIcon, "/dev");
   static readonly PORTFOLIO = new View("Portfolio", HomeIcon, "/portfolio");
   static readonly PORTFOLIO_ABOUT = new View(
     "About",
@@ -47,12 +46,27 @@ class View {
     "/portfolio#connect"
   );
   static readonly BLOG = new View("Blog", LibraryBooksIcon, "/blog");
-  static readonly TUTORIAL = new View(
-    "Tutorials",
-    AssignmentIcon,
-    "/tutorials"
+  static readonly BLOG_ARTICLE = new View(
+    "Articles",
+    LibraryBooksIcon,
+    "/blog?filter=article"
   );
+  static readonly BLOG_TUTORIAL = new View(
+    "Tutorials",
+    AccessibilityNewIcon,
+    "/blog?filter=tutorial"
+  );
+
   static readonly RESUME = new View("Resume", DescriptionIcon, "/resume");
+  static readonly DEV = new View("Dev", FlagIcon, "/dev");
+
+  static values(): Array<View> {
+    return Object.values(View);
+  }
+
+  static matchPath(path: string) {
+    return Object.values(View).find((view) => view.path === path);
+  }
 
   constructor(
     readonly displayName: string,
@@ -60,11 +74,11 @@ class View {
     readonly path: string
   ) {}
 
-  getHash() {
+  getHash(): string {
     return this.path.split("#")[1];
   }
 
-  toString() {
+  toString(): string {
     return this.displayName;
   }
 }

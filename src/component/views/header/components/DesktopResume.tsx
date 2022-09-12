@@ -6,7 +6,7 @@ type Props = {
   onClick?: () => void;
 };
 
-function ResumeButton(props: Props) {
+function DesktopResume(props: Props) {
   const { text, onClick } = props;
 
   return (
@@ -27,4 +27,4 @@ function ResumeButton(props: Props) {
   );
 }
 
-export default ResumeButton;
+export default DesktopResume;

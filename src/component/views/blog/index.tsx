@@ -1,8 +1,11 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+
 import SessionContext from "provider/SessionContext";
-import Error from "component/views/error";
+
 import FeatureFlag from "type/FeatureFlag";
-import { Box } from "@mui/material";
+import View from "type/View";
+import Error from "component/views/error";
 
 function Blog() {
   const { featureFlags } = React.useContext(SessionContext);
@@ -12,7 +15,15 @@ function Blog() {
     return <Error code={404} />;
   }
 
-  return <Error code={501} />;
+  return (
+    <Routes>
+      <Route
+        path={View.BLOG.path + "/:article"}
+        element={<Error code={503} />}
+      />
+      <Route path={""} element={<Error code={501} />} />
+    </Routes>
+  );
 }
 
 export default Blog;

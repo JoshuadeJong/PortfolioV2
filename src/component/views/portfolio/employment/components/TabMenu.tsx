@@ -34,7 +34,7 @@ function TabMenu(props: Props) {
         sx={{
           display: {
             md: "none",
-            sm: "block",
+            xs: "block",
           },
           width: "inherit",
         }}
@@ -57,7 +57,6 @@ function TabMenu(props: Props) {
         sx={{
           display: {
             md: "block",
-            sm: "none",
             xs: "none",
           },
         }}

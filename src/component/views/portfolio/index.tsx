@@ -1,7 +1,7 @@
 import React from "react";
 
-import ResumeContext from "provider/ResumeContext";
-import ResumeContent from "content/ResumeContent";
+import ResumeContext from "provider/portfolio/ResumeContext";
+import ResumeContent from "content/portfolio/ResumeContent";
 
 import Home from "./home";
 import Employment from "./employment";

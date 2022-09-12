@@ -7,7 +7,7 @@ type Props = {
 
 function Page(props: Props) {
   const { children } = props;
-  return <Box sx={{ marginTop: 8, marginBottom: 8 }}>{children}</Box>;
+  return <Box sx={{ marginTop: 12, marginBottom: 8 }}>{children}</Box>;
 }
 
 export default Page;

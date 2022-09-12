@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Box } from "@mui/material";
 
 import View from "type/View";
-import ResumeContext from "provider/ResumeContext";
+import ResumeContext from "provider/portfolio/ResumeContext";
 import { Section, Center, MGrid } from "component/layout";
 import { SectionHeader, Par } from "component/typography";
 

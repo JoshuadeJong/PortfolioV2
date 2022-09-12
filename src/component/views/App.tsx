@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import {
   PaletteMode,
   ThemeProvider,
@@ -23,8 +23,13 @@ function App() {
   const [currentTheme, setCurrentTheme] = React.useState<PaletteMode>("dark");
   const [featureFlags, setFeatureFlags] = React.useState(() => {
     let tempObject = {};
-    Object.values(FeatureFlag).forEach(
-      (x) => (tempObject = { ...tempObject, [x]: x.defaultValue })
+    FeatureFlag.values().forEach(
+      (x) =>
+        (tempObject = {
+          ...tempObject,
+          // @ts-ignore
+          [x]: x.defaultValue,
+        })
     );
     return tempObject;
   });
@@ -69,13 +74,15 @@ function App() {
         <Container maxWidth="lg">
           {/*  Routing */}
           <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path={View.DEV.path} element={<Dev />} />
+            <Route
+              path="/"
+              element={<Navigate to={View.PORTFOLIO.path} replace />}
+            />
             <Route path={View.PORTFOLIO.path} element={<Portfolio />} />
             <Route path={View.BLOG.path} element={<Blog />} />
-            <Route path={View.TUTORIAL.path} element={<Error code={501} />} />
             <Route path={View.RESUME.path} element={<Error code={501} />} />
 
+            <Route path={View.DEV.path} element={<Dev />} />
             <Route path={"*"} element={<Error code={404} />} />
           </Routes>
         </Container>

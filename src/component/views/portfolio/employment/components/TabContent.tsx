@@ -38,7 +38,7 @@ function TabContent(props: Props) {
           color: "text.secondary",
         }}
       >
-        {employment.startDate} -- {employment.endDate}
+        {employment.startDate} — {employment.endDate}
       </Typography>
       <List>
         {employment.bullet.map((bullet, index) => {

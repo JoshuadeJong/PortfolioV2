@@ -13,6 +13,7 @@ import FeatureFlag from "type/FeatureFlag";
 import SessionContext from "provider/SessionContext";
 import { SectionHeader } from "component/typography";
 import { Page } from "component/layout";
+import Error from "../error";
 
 function Dev() {
   const { featureFlags, setFeatureFlag } = React.useContext(SessionContext);
@@ -27,6 +28,11 @@ function Dev() {
   ) => {
     setFeatureFlag(featureFlag, event.target.checked);
   };
+
+  // @ts-ignore
+  if (!featureFlags[FeatureFlag.DEV]) {
+    return <Error code={404} />;
+  }
 
   return (
     <Page>
