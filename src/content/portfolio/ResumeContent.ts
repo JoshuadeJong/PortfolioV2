@@ -80,16 +80,8 @@ const ResumeContent: Resume = {
       name: "Python",
       iconPath: "skills/python.png",
     },
-    {
-      name: "Golang",
-      iconPath: "skills/go.png",
-    },
 
     // Frontend Languages
-    {
-      name: "Javascript",
-      iconPath: "skills/javascript.png",
-    },
     {
       name: "Typescript",
       iconPath: "skills/typescript.png",
@@ -122,10 +114,6 @@ const ResumeContent: Resume = {
       name: "React",
       iconPath: "skills/react.png",
     },
-    {
-      name: "Sass",
-      iconPath: "skills/sass.png",
-    },
 
     // Messaging
     {
@@ -134,6 +122,11 @@ const ResumeContent: Resume = {
     },
 
     // Infra Stuff
+    {
+      name: "Kafka",
+      iconPathDark: "skills/kafka_white.png",
+      iconPathLight: "skills/kafka_black.png",
+    },
     {
       name: "AWS",
       iconPath: "skills/aws.png",
