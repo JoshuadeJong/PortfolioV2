@@ -7,11 +7,11 @@ const ResumeContent: Resume = {
   github: "https://github.com/JoshuadeJong",
   linkedin: "https://www.linkedin.com/in/joshua-de-jong/",
   about: [
-    "Hello! My name is Rexxi and I enjoy licking ham and other things that live on the planet. My interest in Japan started back in 1985 when I decided to try eating the Tokyo Tower — turns out the Japanese didn't like me eating an iconic building in their country. " +
-      "So I set out to destroy the entire city with my sharp tooth.",
-    "Fast-forward to today, I've been banned from Japan and all of South-East Asia, as I am a world wide threat. To get by, I've settled down in a  tiny apartment in Seattle WA. Living under the radar with my best friend Da-da and my servant Ma-ma, my life has become comfortable and non-threatening." +
-      " I spend most days sleeping in and licking my juicy hams (Squishy Baby).",
-    "I also have two brothers Rexxi and Rexxi. They help me terrorize the house so everything can remain happy and peaceful.",
+    // "Hello! My name is Rexxi and I enjoy licking ham and other things that live on the planet. My interest in Japan started back in 1985 when I decided to try eating the Tokyo Tower — turns out the Japanese didn't like me eating an iconic building in their country. " +
+    //   "So I set out to destroy the entire city with my sharp tooth.",
+    // "Fast-forward to today, I've been banned from Japan and all of South-East Asia, as I am a world wide threat. To get by, I've settled down in a  tiny apartment in Seattle WA. Living under the radar with my best friend Da-da and my servant Ma-ma, my life has become comfortable and non-threatening." +
+    //   " I spend most days sleeping in and licking my juicy hams (Squishy Baby).",
+    // "I also have two brothers Rexxi and Rexxi. They help me terrorize the house so everything can remain happy and peaceful.",
   ],
   career: [
     {
@@ -21,7 +21,13 @@ const ResumeContent: Resume = {
       startDate: "Aug 2021",
       endDate: "Present",
       location: "Seattle, WA",
-      bullet: [],
+      bullet: [
+        "Lead a team of 7 full stack developers, participated in defining product requirements, scoped work for engineers, and established best engineering practices.",
+        "Raised team's test coverage by roughly 80% (460+ unit/integration tests) by creating a culture for testing, writing documentation, holding talks, and implementing CI/CD checks.",
+        "Designed and lead the implementation a universal form service to sunset two external products, reducing the operation cost by 70%, removing major security concerns, and improving customer experience. Within the first week the product served 4,000+ customers.",
+        "Stepped in to course correct multiple failing products and solve last minute issues before the launch of new products.",
+        "Created a Spring Boot service responsible for managing the compliance status of $20+ billion of merchandise a year.",
+      ],
     },
     {
       companyName: "Expeditors",
